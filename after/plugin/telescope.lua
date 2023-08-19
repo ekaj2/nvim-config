@@ -5,7 +5,7 @@ vim.keymap.set('n', '<leader>ff', builtin.git_files, {})
 
 -- this doesn't work, maybe come back later
 -- UPDATE: had to install ripgrep
-vim.keymap.set('n', '<leader>ps', function()
+vim.keymap.set('n', '<leader>gr', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ")});
 end)
 
