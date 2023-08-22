@@ -28,3 +28,6 @@ vim.opt.colorcolumn = "80"
 
 vim.g.mapleader = " "
 
+-- I'm not sure how this is actually used?
+-- https://github.com/rcarriga/nvim-notify#Usage
+vim.notify = require("notify")

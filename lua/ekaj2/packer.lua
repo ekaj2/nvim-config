@@ -50,4 +50,34 @@ return require('packer').startup(function(use)
 
   use('xiyaowong/transparent.nvim')
 
+  -- TODO: come back to this to see how I can use it better?
+  use('rcarriga/nvim-notify')
+
+  use({
+      "jackMort/ChatGPT.nvim",
+      --config = function()
+      --    require("chatgpt").setup()
+      --end,
+      requires = {
+          "MunifTanjim/nui.nvim",
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope.nvim"
+      }
+  })
+
+  -- Not working rn:
+  -- https://github.com/folke/noice.nvim
+  -- use {
+  --     "folke/noice.nvim",
+  --     event = "VeryLazy",
+  --     requires = {
+  --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --         "MunifTanjim/nui.nvim",
+  --         -- OPTIONAL:
+  --         --   `nvim-notify` is only needed, if you want to use the notification view.
+  --         --   If not available, we use `mini` as the fallback
+  --         "rcarriga/nvim-notify",
+  --     }
+  -- }
+
 end)
