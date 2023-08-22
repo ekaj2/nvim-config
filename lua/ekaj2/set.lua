@@ -4,6 +4,7 @@ vim.opt.relativenumber = true
 
 vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "region,endregion"
+vim.opt.foldlevelstart = 99
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -21,7 +22,7 @@ vim.opt.incsearch = true  -- live search
 
 vim.opt.wrap = false
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
