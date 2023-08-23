@@ -48,4 +48,10 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
+
+  -- use tree sitter instead of default for Vim to handle indentation
+  -- also used for "=" hotkey in normal/visual mode
+  indent = {
+      enable = true,
+  }
 }

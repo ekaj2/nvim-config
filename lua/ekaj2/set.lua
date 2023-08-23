@@ -1,3 +1,5 @@
+--vim.opt.shortmess:append("I") -- Don't pass messages to |ins-completion-menu|.
+
 vim.opt.guicursor = "" -- fat cursor even in insert mode
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -17,7 +19,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 
-vim.opt.hlsearch = false  -- dont keep search highlighted
+vim.opt.hlsearch = true  -- dont keep search highlighted
 vim.opt.incsearch = true  -- live search
 
 vim.opt.wrap = false
@@ -31,4 +33,4 @@ vim.g.mapleader = " "
 
 -- I'm not sure how this is actually used?
 -- https://github.com/rcarriga/nvim-notify#Usage
-vim.notify = require("notify")
+-- vim.notify = require("notify")
