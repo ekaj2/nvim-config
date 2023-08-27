@@ -23,7 +23,14 @@ vim.api.nvim_set_keymap("n", "Q", "<nop>", { noremap = true, silent = true })
 -- MY NOTES / TODO
 vim.api.nvim_set_keymap("n", "<leader>n", ":e ~/notes/notes.md<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>t", ":e ~/notes/todo.md<CR>", { noremap = true, silent = true })
--- TODO:
--- Function to call gpt to decide on a commit message, make the commit, and push to github!
--- Call git pull when opening notes or todo
 
+-- call XCommit() with <leader>ic hotkey
+vim.api.nvim_set_keymap("n", "<leader>ic", ":lua XCommit()<CR>", {})
+
+-- TODO: figure out how to make this work without making me press enter all the time
+-- vim.keymap.set("n", "<leader>ic", function()
+--     vim.defer_fn(function() 
+--         require("ekaj2.gpt_notes")
+--         XCommit()
+--     end, 0)
+-- end, { noremap = true, silent = false })

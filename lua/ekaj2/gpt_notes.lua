@@ -1,18 +1,24 @@
 function XCommit()
+    -- store the current directory
+    local current_dir = vim.fn.getcwd()
+    -- change to ~/notes
+    vim.cmd("cd ~/notes")
+
     vim.notify("--------------------------------------------------", vim.log.levels.WARN)
     vim.notify("Checking git status...", vim.log.levels.DEBUG)
     local gitstatus = vim.fn.system("git status")
     vim.notify(gitstatus, vim.log.levels.DEBUG)
 
     -- check if "Tracked files" is in the git status
-    if string.find(gitstatus, "Tracked files") == nil then
+    if string.find(gitstatus, "Changes not staged for commit") == nil then
         vim.notify("No changes to tracked files. Exiting.", vim.log.levels.ERROR)
+        vim.cmd("cd " .. current_dir)
         return
     end
 
     vim.notify("--------------------------------------------------", vim.log.levels.WARN)
 
-    local diff = vim.fn.system("git diff")
+    local diff = vim.fn.system("git diff -U0")
     local gpt_completion = GptCall("Write a one line git commit message for this diff: \n\n" .. diff)
 
     vim.notify("Wrote commit message: " .. gpt_completion, vim.log.levels.DEBUG)
@@ -32,6 +38,8 @@ function XCommit()
     vim.notify("Pushing...", vim.log.levels.DEBUG)
     local gitpush = vim.fn.system("git push")
     vim.notify(gitpush, vim.log.levels.DEBUG)
+
+    vim.cmd("cd " .. current_dir)
 end
 
 local function remove_non_ascii(str)
