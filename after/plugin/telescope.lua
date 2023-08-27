@@ -16,7 +16,7 @@ vim.keymap.set('n', '<leader>ss', function()
     });
 end)
 
-vim.keymap.set('n', '<leader>rs', function()
+vim.keymap.set('n', '<leader>sr', function()
 	builtin.grep_string({
         search = vim.fn.input("Regex search: "),
         use_regex = true,

@@ -95,7 +95,7 @@ _G.packer_plugins = {
     url = "https://github.com/github/copilot.vim"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n�\2\0\0\6\0\15\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\r\0005\3\4\0005\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\0045\5\a\0>\5\2\4=\4\b\0035\4\t\0=\4\n\0035\4\v\0=\4\f\3=\3\14\2B\0\2\1K\0\1\0\vconfig\1\0\0\vfooter\1\2\0\0$It's a good day to code. ☔️\fproject\1\0\1\venable\1\rshortcut\1\0\4\vaction\23:e ~/.config/nvim/\bkey\6c\ngroup\vNumber\tdesc\22 Neovim Config\1\0\6\vaction\25Telescope find_files\bkey\6f\ngroup\nLabel\tdesc\nFiles\ficon_hl\14@variable\ticon\t \16week_header\1\0\0\1\0\1\venable\2\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n�\2\0\0\6\0\15\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\r\0005\3\4\0005\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\0045\5\a\0>\5\2\4=\4\b\0035\4\t\0=\4\n\0035\4\v\0=\4\f\3=\3\14\2B\0\2\1K\0\1\0\vconfig\1\0\0\vfooter\1\2\0\0$It's a good day to code. ☔️\fproject\1\0\1\venable\1\rshortcut\1\0\4\bkey\6c\ngroup\vNumber\tdesc\22 Neovim Config\vaction\23:e ~/.config/nvim/\1\0\6\ficon_hl\14@variable\ngroup\nLabel\tdesc\nFiles\bkey\6f\ticon\t \vaction\25Telescope find_files\16week_header\1\0\0\1\0\1\venable\2\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -131,6 +131,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-python"] = {
+    loaded = true,
+    path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/nvim-dap-python",
+    url = "https://github.com/mfussenegger/nvim-dap-python"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-dap-virtual-text"] = {
+    loaded = true,
+    path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
+    url = "https://github.com/theHamsta/nvim-dap-virtual-text"
   },
   ["nvim-lspconfig"] = {
     loaded = true,

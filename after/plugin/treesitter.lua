@@ -8,6 +8,7 @@ require'nvim-treesitter.configs'.setup {
       "lua",
       --"vim",
       "vimdoc",
+      "css",
       --"query",
   },
 
