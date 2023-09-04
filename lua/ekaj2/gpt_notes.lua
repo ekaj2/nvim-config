@@ -30,6 +30,8 @@ function XCommit()
     vim.notify("--------------------------------------------------", vim.log.levels.WARN)
 
     vim.notify("Committing...", vim.log.levels.DEBUG)
+    -- replace all ' in gpt_completion with \'
+    gpt_completion = gpt_completion:gsub("'", "")
     local gitcommit = vim.fn.system("git commit -m '" .. gpt_completion .. "'")
     vim.notify(gitcommit, vim.log.levels.DEBUG)
 

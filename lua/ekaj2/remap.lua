@@ -34,3 +34,24 @@ vim.api.nvim_set_keymap("n", "<leader>ic", ":lua XCommit()<CR>", {})
 --         XCommit()
 --     end, 0)
 -- end, { noremap = true, silent = false })
+
+-- Automatic date insertion to my notes file
+-- pneumonic: "add date"
+vim.keymap.set("n", "<leader>ad", function()
+    local current_date = os.date("%m/%d/%Y")
+    local underline = string.rep("=", #current_date)
+
+    local lines = {
+        "--------------------------------------------------------------------------------",
+        "",
+        current_date,
+        underline,
+        ""
+    }
+
+    -- vim.api.nvim_out_write("Adding date header...\n")
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    vim.api.nvim_buf_set_lines(0, row, row, false, lines)
+    vim.api.nvim_win_set_cursor(0, { row + 5, 0 })
+end)
+
