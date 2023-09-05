@@ -27,7 +27,13 @@ vim.keymap.set('n', '<leader>ff', builtin.git_files, {})
 -- this doesn't work, maybe come back later
 -- UPDATE: had to install ripgrep
 vim.keymap.set('n', '<leader>ss', function()
-	builtin.live_grep({});
+    builtin.live_grep({
+        path_display = {
+            "tail",
+            --shorten = 2,
+        }, -- see :h telescope.defaults.path_display
+        -- wrap_results = true
+    });
 end)
 
 -- st for "structure"
@@ -36,5 +42,8 @@ vim.keymap.set('n', '<leader>st', function()
         ignore_symbols = {
             "Variable",
         },
+        prompt_title = "Search File Structure",
+        preview_title = "Preview",
     });
 end)
+
