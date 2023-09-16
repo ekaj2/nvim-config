@@ -29,10 +29,10 @@ vim.keymap.set('n', '<leader>ff', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ss', function()
     builtin.live_grep({
         path_display = {
-            "tail",
-            --shorten = 2,
+            -- "tail",
+            -- shorten = 4,
         }, -- see :h telescope.defaults.path_display
-        -- wrap_results = true
+        wrap_results = true
     });
 end)
 

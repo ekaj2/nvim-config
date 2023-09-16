@@ -115,7 +115,7 @@ return require('packer').startup(function(use)
                         },
                     },
                     project = { enable = false },
-                    footer = { 
+                    footer = {
                         "It's a good day to code. ☔️"
                     },
                 }
@@ -139,4 +139,21 @@ return require('packer').startup(function(use)
         end
     })
 
+    use({
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("colorizer").setup()
+        end
+    })
+
+    use {
+        'ziontee113/color-picker.nvim',
+        config = function()
+            require('color-picker').setup()
+        end
+    }
+
+    use {
+        'sbdchd/neoformat',
+    }
 end)
