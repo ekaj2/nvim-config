@@ -3,6 +3,7 @@
 vim.opt.guicursor = "" -- fat cursor even in insert mode
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.cursorline = true
 
 vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "region,endregion"
@@ -18,9 +19,8 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-
-vim.opt.hlsearch = true  -- dont keep search highlighted
-vim.opt.incsearch = true  -- live search
+vim.opt.hlsearch = true -- dont keep search highlighted
+vim.opt.incsearch = true -- live search
 
 vim.opt.wrap = false
 
