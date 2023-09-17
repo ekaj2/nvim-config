@@ -87,3 +87,33 @@ vim.keymap.set("n", "<leader>b", function()
 		},
 	})
 end)
+
+-- more performance improvements for telescope:
+-- https://github.com/nvim-telescope/telescope.nvim/issues/623#issuecomment-792233601
+local previewers = require("telescope.previewers")
+
+local new_maker = function(filepath, bufnr, opts)
+	opts = opts or {}
+
+	filepath = vim.fn.expand(filepath)
+	vim.loop.fs_stat(filepath, function(_, stat)
+		if not stat then
+			return
+		end
+		if stat.size > 100000 then
+			return
+		else
+			previewers.buffer_previewer_maker(filepath, bufnr, opts)
+		end
+	end)
+end
+
+require("telescope").setup({
+	defaults = {
+		buffer_previewer_maker = new_maker,
+		-- see: https://github.com/nvim-telescope/telescope.nvim/issues/1379#issuecomment-996590765
+		preview = {
+			treesitter = false,
+		},
+	},
+})

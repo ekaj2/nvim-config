@@ -12,17 +12,6 @@ return require("packer").startup(function(use)
 		tag = "0.1.2",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
-		-- this whole config used to not be here
-		-- see this: https://github.com/nvim-telescope/telescope.nvim/issues/1379#issuecomment-996590765
-		config = function()
-			require("telescope").setup({
-				defaults = {
-					preview = {
-						treesitter = false,
-					},
-				},
-			})
-		end,
 	})
 
 	use({
