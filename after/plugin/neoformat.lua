@@ -3,14 +3,14 @@
 vim.g.neoformat_html_djlint = {
 	exe = "djlint",
 	args = {
+		"-", -- read from stdin
 		"--reformat",
 		"--format-css",
 		"--format-js",
 		"--indent=2",
 	},
 	valid_exit_codes = { 0, 1, 130 },
-	stdin = false,
-	replace = true,
+	stdin = true,
 }
 vim.g.neoformat_enabled_html = { "djlint" }
 vim.g.neoformat_verbose = 1
