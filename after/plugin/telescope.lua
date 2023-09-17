@@ -90,6 +90,7 @@ end)
 
 -- more performance improvements for telescope:
 -- https://github.com/nvim-telescope/telescope.nvim/issues/623#issuecomment-792233601
+-- THIS WORKS WONDERFULLY
 local previewers = require("telescope.previewers")
 
 local new_maker = function(filepath, bufnr, opts)
