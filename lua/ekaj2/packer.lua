@@ -157,4 +157,33 @@ return require("packer").startup(function(use)
 	use({
 		"sbdchd/neoformat",
 	})
+
+	-- use({
+	-- 	"Wansmer/symbol-usage.nvim",
+	-- 	event = "BufReadPre",
+	-- 	config = function()
+	-- 		require("symbol-usage").setup()
+	-- 	end,
+	-- })
+
+	-- install without yarn or npm
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+
+	use({
+		"folke/todo-comments.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("todo-comments").setup()
+		end,
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	})
 end)
