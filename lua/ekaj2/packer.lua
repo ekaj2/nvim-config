@@ -220,6 +220,27 @@ return require("packer").startup(function(use)
 		config = function()
 			local cmp = require("cmp")
 			cmp.setup({
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+				mapping = {
+					["<C-u>"] = cmp.mapping.scroll_docs(-4),
+					["<C-d>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = function(fallback)
+						if cmp.visible() then
+							cmp.confirm({ select = true })
+						else
+							cmp.complete()
+						end
+					end,
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				},
 				--			snippet = {
 				--				-- REQUIRED - you must specify a snippet engine
 				--				expand = function(args)
@@ -229,18 +250,6 @@ return require("packer").startup(function(use)
 				--					-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 				--				end,
 				--			},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-u>"] = cmp.mapping.scroll_docs(-4),
-					["<C-d>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-					["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "copilot" },
