@@ -17,12 +17,6 @@ return require("packer").startup(function(use)
 	use({
 		"rose-pine/neovim",
 		as = "rose-pine",
-		config = function()
-			require("rose-pine").setup({
-				disable_background = true,
-				disable_float_background = true,
-			})
-		end,
 	})
 
 	use({
@@ -171,12 +165,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"ziontee113/color-picker.nvim",
-		config = function()
-			require("color-picker").setup()
-		end,
-	})
+	-- use({
+	-- 	"ziontee113/color-picker.nvim",
+	-- 	config = function()
+	-- 		require("color-picker").setup()
+	-- 	end,
+	-- })
 
 	use({
 		"sbdchd/neoformat",
