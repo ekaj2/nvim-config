@@ -29,7 +29,7 @@ vim.api.nvim_set_keymap("n", "<leader>ic", ":lua XCommit()<CR>", {})
 
 -- TODO: figure out how to make this work without making me press enter all the time
 -- vim.keymap.set("n", "<leader>ic", function()
---     vim.defer_fn(function() 
+--     vim.defer_fn(function()
 --         require("ekaj2.gpt_notes")
 --         XCommit()
 --     end, 0)
@@ -38,20 +38,22 @@ vim.api.nvim_set_keymap("n", "<leader>ic", ":lua XCommit()<CR>", {})
 -- Automatic date insertion to my notes file
 -- pneumonic: "add date"
 vim.keymap.set("n", "<leader>ad", function()
-    local current_date = os.date("%m/%d/%Y")
-    local underline = string.rep("=", #current_date)
+	local current_date = os.date("%m/%d/%Y")
+	local underline = string.rep("=", #current_date)
 
-    local lines = {
-        "--------------------------------------------------------------------------------",
-        "",
-        current_date,
-        underline,
-        ""
-    }
+	local lines = {
+		"--------------------------------------------------------------------------------",
+		"",
+		current_date,
+		underline,
+		"",
+	}
 
-    -- vim.api.nvim_out_write("Adding date header...\n")
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    vim.api.nvim_buf_set_lines(0, row, row, false, lines)
-    vim.api.nvim_win_set_cursor(0, { row + 5, 0 })
+	-- vim.api.nvim_out_write("Adding date header...\n")
+	local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+	vim.api.nvim_buf_set_lines(0, row, row, false, lines)
+	vim.api.nvim_win_set_cursor(0, { row + 5, 0 })
 end)
 
+-- rename with lsp
+vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })

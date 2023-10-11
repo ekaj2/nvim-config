@@ -300,4 +300,15 @@ return require("packer").startup(function(use)
 			--		})
 		end,
 	})
+
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+	})
+
+	-- someday:
+	-- https://github.com/pwntester/octo.nvim#-features
+	-- https://github.com/dhruvmanila/browser-bookmarks.nvim#supported-browsers
 end)
