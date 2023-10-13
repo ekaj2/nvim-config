@@ -20,6 +20,27 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-tree").setup({
+				sort_by = "case_sensitive",
+				view = {
+					width = 30,
+				},
+				renderer = {
+					group_empty = true,
+				},
+				filters = {
+					dotfiles = true,
+				},
+			})
+			-- make :Lex do :NvimTreeToggle
+			vim.cmd("command! Lex NvimTreeToggle")
+		end,
+	})
+
+	use({
 		"nvim-treesitter/nvim-treesitter",
 		{ run = ":TSUpdate" },
 	})
