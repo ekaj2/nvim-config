@@ -96,7 +96,10 @@ return require("packer").startup(function(use)
 	--use('rcarriga/nvim-notify')
 
 	use({
-		"jackMort/ChatGPT.nvim",
+		"ekaj2/ChatGPT.nvim",
+		--"jackMort/ChatGPT.nvim",
+		--commit = "d4aa4d9", -- https://github.com/jackMort/ChatGPT.nvim/issues/303
+		--"~/projects/jackmort-chatgpt",
 		--config = function()
 		--    require("chatgpt").setup()
 		--end,
@@ -105,7 +108,6 @@ return require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-		commit = "d4aa4d9", -- https://github.com/jackMort/ChatGPT.nvim/issues/303
 	})
 
 	-- Not working rn:
