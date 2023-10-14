@@ -329,4 +329,18 @@ return require("packer").startup(function(use)
 	-- someday:
 	-- https://github.com/pwntester/octo.nvim#-features
 	-- https://github.com/dhruvmanila/browser-bookmarks.nvim#supported-browsers
+
+	-- doesn't seem to work with netrw disabled
+	-- and I hate netrw since it messes up which folder I add files into
+	-- use({
+	-- 	"axieax/urlview.nvim",
+	-- 	config = function()
+	-- 		require("urlview").setup()
+	-- 	end,
+	-- })
+
+	use({
+		"lalitmee/browse.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+	})
 end)

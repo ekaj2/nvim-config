@@ -57,3 +57,11 @@ end)
 
 -- rename with lsp
 vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+
+-- browsing plugin "arc search" "arc bookmarks"
+vim.keymap.set("n", "<leader>as", function()
+	require("browse").input_search()
+end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>ab", function()
+	require("browse").open_bookmarks()
+end, { noremap = true, silent = true })

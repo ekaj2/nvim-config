@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["browse.nvim"] = {
+    loaded = true,
+    path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/browse.nvim",
+    url = "https://github.com/lalitmee/browse.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -115,7 +120,7 @@ _G.packer_plugins = {
     url = "https://github.com/zbirenbaum/copilot.lua"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n˝\2\0\0\6\0\15\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\r\0005\3\4\0005\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\0045\5\a\0>\5\2\4=\4\b\0035\4\t\0=\4\n\0035\4\v\0=\4\f\3=\3\14\2B\0\2\1K\0\1\0\vconfig\1\0\0\vfooter\1\2\0\0$It's a good day to code. ‚òîÔ∏è\fproject\1\0\1\venable\1\rshortcut\1\0\4\ngroup\vNumber\bkey\6c\tdesc\22Ó¨© Neovim Config\vaction\23:e ~/.config/nvim/\1\0\6\tdesc\nFiles\ticon\tÓàï \bkey\6f\vaction\25Telescope find_files\ngroup\nLabel\ficon_hl\14@variable\16week_header\1\0\0\1\0\1\venable\2\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n˝\2\0\0\6\0\15\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\r\0005\3\4\0005\4\3\0=\4\5\0034\4\3\0005\5\6\0>\5\1\0045\5\a\0>\5\2\4=\4\b\0035\4\t\0=\4\n\0035\4\v\0=\4\f\3=\3\14\2B\0\2\1K\0\1\0\vconfig\1\0\0\vfooter\1\2\0\0$It's a good day to code. ‚òîÔ∏è\fproject\1\0\1\venable\1\rshortcut\1\0\4\tdesc\22Ó¨© Neovim Config\bkey\6c\ngroup\vNumber\vaction\23:e ~/.config/nvim/\1\0\6\ngroup\nLabel\ticon\tÓàï \bkey\6f\vaction\25Telescope find_files\tdesc\nFiles\ficon_hl\14@variable\16week_header\1\0\0\1\0\1\venable\2\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -304,10 +309,10 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\2\ne\0\1\4\1\4\0\14-\1\0\0009\1\0\1B\1\1\2\15\0\1\0X\2\5Ä-\1\0\0009\1\1\0015\3\2\0B\1\2\1X\1\3Ä-\1\0\0009\1\3\1B\1\1\1K\0\1\0\0¿\rcomplete\1\0\1\vselect\2\fconfirm\fvisibleÉ\4\1\0\b\0\29\0=6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\t\0005\4\6\0009\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\a\0049\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\b\4=\4\4\0035\4\n\0=\4\a\0035\4\r\0009\5\v\0009\5\f\5)\a¸ˇB\5\2\2=\5\14\0049\5\v\0009\5\f\5)\a\4\0B\5\2\2=\5\15\0043\5\16\0=\5\17\0049\5\v\0009\5\18\5B\5\1\2=\5\19\0049\5\v\0009\5\20\0055\a\21\0B\5\2\2=\5\22\0049\5\v\0009\5\20\0055\a\23\0B\5\2\2=\5\24\4=\4\v\0039\4\3\0009\4\25\0044\6\4\0005\a\26\0>\a\1\0065\a\27\0>\a\2\0065\a\28\0>\a\3\6B\4\2\2=\4\25\3B\1\2\0012\0\0ÄK\0\1\0\1\0\1\tname\vsnippy\1\0\1\tname\fcopilot\1\0\1\tname\rnvim_lsp\fsources\n<C-y>\1\0\1\vselect\2\t<CR>\1\0\1\vselect\1\fconfirm\n<C-e>\nabort\14<C-Space>\0\n<C-d>\n<C-u>\1\0\0\16scroll_docs\fmapping\1\0\1\16completeopt\26menu,menuone,noinsert\1\0\0\18documentation\15completion\1\0\0\rbordered\vwindow\vconfig\nsetup\bcmp\frequire\0", "config", "nvim-cmp")
-time([[Config for nvim-cmp]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
@@ -320,10 +325,10 @@ time([[Config for telescope-frecency.nvim]], false)
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
 time([[Config for nvim-colorizer.lua]], false)
--- Config for: nvim-surround
-time([[Config for nvim-surround]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
-time([[Config for nvim-surround]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+try_loadstring("\27LJ\2\ne\0\1\4\1\4\0\14-\1\0\0009\1\0\1B\1\1\2\15\0\1\0X\2\5Ä-\1\0\0009\1\1\0015\3\2\0B\1\2\1X\1\3Ä-\1\0\0009\1\3\1B\1\1\1K\0\1\0\0¿\rcomplete\1\0\1\vselect\2\fconfirm\fvisibleÉ\4\1\0\b\0\29\0=6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\t\0005\4\6\0009\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\a\0049\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\b\4=\4\4\0035\4\n\0=\4\a\0035\4\r\0009\5\v\0009\5\f\5)\a¸ˇB\5\2\2=\5\14\0049\5\v\0009\5\f\5)\a\4\0B\5\2\2=\5\15\0043\5\16\0=\5\17\0049\5\v\0009\5\18\5B\5\1\2=\5\19\0049\5\v\0009\5\20\0055\a\21\0B\5\2\2=\5\22\0049\5\v\0009\5\20\0055\a\23\0B\5\2\2=\5\24\4=\4\v\0039\4\3\0009\4\25\0044\6\4\0005\a\26\0>\a\1\0065\a\27\0>\a\2\0065\a\28\0>\a\3\6B\4\2\2=\4\25\3B\1\2\0012\0\0ÄK\0\1\0\1\0\1\tname\vsnippy\1\0\1\tname\fcopilot\1\0\1\tname\rnvim_lsp\fsources\n<C-y>\1\0\1\vselect\2\t<CR>\1\0\1\vselect\1\fconfirm\n<C-e>\nabort\14<C-Space>\0\n<C-d>\n<C-u>\1\0\0\16scroll_docs\fmapping\1\0\1\16completeopt\26menu,menuone,noinsert\1\0\0\18documentation\15completion\1\0\0\rbordered\vwindow\vconfig\nsetup\bcmp\frequire\0", "config", "nvim-cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\nﬂ\1\0\0\4\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\0016\0\n\0009\0\v\0'\2\f\0B\0\2\1K\0\1\0 command! Lex NvimTreeToggle\bcmd\bvim\ffilters\1\0\1\rdotfiles\2\rrenderer\1\0\1\16group_empty\2\tview\1\0\1\nwidth\3\30\1\0\1\fsort_by\19case_sensitive\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
@@ -344,8 +349,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.lua'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'dashboard-nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.lua'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
