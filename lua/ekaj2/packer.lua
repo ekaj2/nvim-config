@@ -105,6 +105,7 @@ return require("packer").startup(function(use)
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
+		commit = "d4aa4d9", -- https://github.com/jackMort/ChatGPT.nvim/issues/303
 	})
 
 	-- Not working rn:
