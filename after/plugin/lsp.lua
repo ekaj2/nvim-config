@@ -27,6 +27,18 @@ lsp.ensure_installed({
 --end)
 
 -- (Optional) Configure lua language server for neovim
-require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
+--lspconfig.pyright.setup(lsp.pyright())
+lsp.use("pyright", {
+	settings = {
+		python = {
+			--analysis = {
+			--	extraPaths = { "/path/to/my/dependencies" },
+			--},
+		},
+	},
+})
 
 lsp.setup()
