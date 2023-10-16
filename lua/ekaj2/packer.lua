@@ -424,4 +424,20 @@ return require("packer").startup(function(use)
 			require("deadcolumn").setup(opts)
 		end,
 	})
+
+	-- TODO: Needs 0.10. Come back later and see about swapping for scrollview
+	--
+	-- use({
+	-- 	"lewis6991/satellite.nvim",
+	-- 	config = function()
+	-- 		require("satellite").setup()
+	-- 	end,
+	-- })
+
+	use({
+		"dstein64/nvim-scrollview",
+		config = function()
+			require("scrollview").setup()
+		end,
+	})
 end)
