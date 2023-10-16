@@ -93,7 +93,16 @@ return require("packer").startup(function(use)
 	})
 
 	---- TODO: come back to this to see how I can use it better?
-	--use('rcarriga/nvim-notify')
+	--
+	-- UPDATE: still not working as of 10/15/2023...come back later...
+	-- use({
+	-- 	"rcarriga/nvim-notify",
+	-- 	config = function()
+	-- 		require("notify").setup({
+	-- 			background_colour = "#77GG44",
+	-- 		})
+	-- 	end,
+	-- })
 
 	use({
 		"ekaj2/ChatGPT.nvim",
@@ -367,6 +376,52 @@ return require("packer").startup(function(use)
 		},
 		config = function()
 			require("trouble").setup()
+		end,
+	})
+
+	-- Doesn't seem to work?
+	-- use({
+	-- 	"roobert/action-hints.nvim",
+	-- 	config = function()
+	-- 		require("action-hints").setup()
+	-- 	end,
+	-- })
+
+	use({
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		config = function()
+			require("fidget").setup({
+				-- options
+			})
+		end,
+	})
+
+	-- "": open menu
+	use("gennaro-tedesco/nvim-peekup")
+
+	use({
+		"chentoast/marks.nvim",
+		config = function()
+			require("marks").setup({})
+		end,
+	})
+
+	use({
+		"Bekaboo/deadcolumn.nvim",
+		config = function()
+			local opts = {
+				scope = "line",
+				blending = {
+					threshold = 0.75,
+					colorcode = "#120f17",
+				},
+				warning = {
+					alpha = 0.2,
+					colorcode = "#bb0000",
+				},
+			}
+			require("deadcolumn").setup(opts)
 		end,
 	})
 end)
