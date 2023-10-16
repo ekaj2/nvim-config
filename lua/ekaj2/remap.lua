@@ -22,7 +22,7 @@ vim.api.nvim_set_keymap("n", "Q", "<nop>", { noremap = true, silent = true })
 
 -- MY NOTES / TODO
 vim.api.nvim_set_keymap("n", "<leader>n", ":e ~/notes/notes.md<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>t", ":e ~/notes/todo.md<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>to", ":e ~/notes/todo.md<CR>", { noremap = true, silent = true })
 
 -- call XCommit() with <leader>ic hotkey
 vim.api.nvim_set_keymap("n", "<leader>ic", ":lua XCommit()<CR>", {})
@@ -65,3 +65,5 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>ab", function()
 	require("browse").open_bookmarks()
 end, { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>TroubleToggle<CR>", { noremap = true, silent = true })
