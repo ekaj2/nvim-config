@@ -19,7 +19,7 @@ return require("packer").startup(function(use)
 		as = "rose-pine",
 	})
 
-	-- to toggle dotfiles and gitignore, type "hi" in the nvim tree
+	-- to toggle dotfiles and gitignore, type "HI" in the nvim tree
 	-- to see all hotkeys, type "g?"
 	use({
 		"nvim-tree/nvim-tree.lua",
