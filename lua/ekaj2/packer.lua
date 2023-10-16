@@ -19,6 +19,8 @@ return require("packer").startup(function(use)
 		as = "rose-pine",
 	})
 
+	-- to toggle dotfiles and gitignore, type "hi" in the nvim tree
+	-- to see all hotkeys, type "g?"
 	use({
 		"nvim-tree/nvim-tree.lua",
 		requires = "nvim-tree/nvim-web-devicons",
@@ -29,10 +31,11 @@ return require("packer").startup(function(use)
 					width = 30,
 				},
 				renderer = {
-					group_empty = true,
+					group_empty = false,
 				},
 				filters = {
-					dotfiles = true,
+					dotfiles = false,
+					git_ignored = false,
 				},
 			})
 			-- make :Lex do :NvimTreeToggle
@@ -225,17 +228,29 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- NOTE: Find more icons here: https://www.nerdfonts.com/cheat-sheet
 	use({
 		"folke/todo-comments.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("todo-comments").setup()
+			local opts = {
+				keywords = {
+					FIX = {
+						icon = "", -- icon used for the sign, and in search results
+						color = "error", -- can be a hex color, or a named color (see below)
+						alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+						-- signs = false, -- configure signs for some keywords individually
+					},
+					TODO = { icon = "", color = "info" },
+					HACK = { icon = "", color = "warning" },
+					WARN = { icon = "", color = "warning", alt = { "WARNING", "XXX" } },
+					PERF = { icon = "", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+					NOTE = { icon = "", color = "hint", alt = { "INFO" } },
+					TEST = { icon = "󰙨", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+				},
+			}
+			require("todo-comments").setup(opts)
 		end,
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
 	})
 
 	use({ "dcampos/nvim-snippy" })
@@ -328,12 +343,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-	})
+	-- use({
+	-- 	"nvim-telescope/telescope-frecency.nvim",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("frecency")
+	-- 	end,
+	-- })
 
 	-- doesn't work rn, but maybe someday:
 	-- https://github.com/pwntester/octo.nvim#-features
@@ -437,7 +452,10 @@ return require("packer").startup(function(use)
 	use({
 		"dstein64/nvim-scrollview",
 		config = function()
-			require("scrollview").setup()
+			require("scrollview").setup({
+				scrollview_excluded_filetypes = { "NvimTree" },
+				scrollview_line_limit = 5000, -- default is 20k which is high
+			})
 		end,
 	})
 

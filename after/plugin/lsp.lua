@@ -1,8 +1,8 @@
-local lsp = require("lsp-zero")
+local lsp_zero = require("lsp-zero")
 
-lsp.preset("recommended")
+lsp_zero.preset("recommended")
 
-lsp.ensure_installed({
+lsp_zero.ensure_installed({
 	-- TODO
 })
 
@@ -28,10 +28,10 @@ lsp.ensure_installed({
 
 -- (Optional) Configure lua language server for neovim
 local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 
 --lspconfig.pyright.setup(lsp.pyright())
-lsp.use("pyright", {
+lsp_zero.use("pyright", {
 	settings = {
 		python = {
 			--analysis = {
@@ -41,4 +41,11 @@ lsp.use("pyright", {
 	},
 })
 
-lsp.setup()
+lsp_zero.set_sign_icons({
+	error = "✘",
+	warn = "▲",
+	hint = "⚑",
+	info = "»",
+})
+
+lsp_zero.setup()
