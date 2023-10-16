@@ -440,4 +440,19 @@ return require("packer").startup(function(use)
 			require("scrollview").setup()
 		end,
 	})
+
+	-- Doesn't seem to work on neovim :(
+	-- use({
+	-- 	"tpope/vim-commentary",
+	-- 	config = function()
+	-- 		require("commentary").setup()
+	-- 	end,
+	-- })
+
+	use({
+		"terrortylor/nvim-comment",
+		config = function()
+			require("nvim_comment").setup()
+		end,
+	})
 end)
