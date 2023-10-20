@@ -2,6 +2,12 @@ local dap = require("dap")
 local dapui = require("dapui")
 dapui.setup({})
 
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "ﳁ", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DapBreakpoint", numhl = "DapBreakpoint" })
+vim.fn.sign_define("DapLogPoint", { text = "", texthl = "DapLogPoint", numhl = "DapLogPoint" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", numhl = "DapStopped" })
+
 -- TODO: find out if I need to specify a setup directory like:
 -- https://github.com/mfussenegger/nvim-dap-python#usage
 local dap_python = require("dap-python")

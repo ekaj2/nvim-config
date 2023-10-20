@@ -11,3 +11,26 @@ require("ekaj2.set")
 require("ekaj2.gpt_notes")
 
 require("ekaj2.remap")
+
+function ColorMyPencils(color)
+	color = color or "rose-pine"
+	vim.cmd.colorscheme(color)
+
+	-- 0 means the global thing so every window gets it
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+	vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939" })
+	vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef" })
+	vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379" })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	pattern = "*",
+	desc = "prevent colorscheme clears self-defined DAP icon colors.",
+	callback = function()
+		ColorMyPencils()
+	end,
+})
+
+ColorMyPencils()

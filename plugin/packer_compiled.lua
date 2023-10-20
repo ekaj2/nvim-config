@@ -170,6 +170,12 @@ _G.packer_plugins = {
     path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["neodev.nvim"] = {
+    config = { "\27LJ\2\nu\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\flibrary\1\0\0\fplugins\1\0\1\ntypes\2\1\2\0\0\16nvim-dap-ui\nsetup\vneodev\frequire\0" },
+    loaded = true,
+    path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "/Users/eagle/.local/share/nvim/site/pack/packer/start/neoformat",
@@ -348,10 +354,14 @@ end
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
--- Config for: nvim-surround
-time([[Config for nvim-surround]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
-time([[Config for nvim-surround]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\nì\1\0\0\4\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\0016\0\n\0009\0\v\0'\2\f\0B\0\2\1K\0\1\0 command! Lex NvimTreeToggle\bcmd\bvim\ffilters\1\0\2\16git_ignored\1\rdotfiles\1\rrenderer\1\0\1\16group_empty\1\tview\1\0\1\nwidth\3\30\1\0\1\fsort_by\19case_sensitive\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
+-- Config for: marks.nvim
+time([[Config for marks.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\nmarks\frequire\0", "config", "marks.nvim")
+time([[Config for marks.nvim]], false)
 -- Config for: nvim-scrollview
 time([[Config for nvim-scrollview]], true)
 try_loadstring("\27LJ\2\n‹\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\"scrollview_excluded_filetypes\1\0\1\26scrollview_line_limit\3ˆ'\1\2\0\0\rNvimTree\nsetup\15scrollview\frequire\0", "config", "nvim-scrollview")
@@ -360,18 +370,18 @@ time([[Config for nvim-scrollview]], false)
 time([[Config for deadcolumn.nvim]], true)
 try_loadstring("\27LJ\2\n»\1\0\0\4\0\b\0\f5\0\0\0005\1\1\0=\1\2\0005\1\3\0=\1\4\0006\1\5\0'\3\6\0B\1\2\0029\1\a\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\15deadcolumn\frequire\fwarning\1\0\2\14colorcode\f#bb0000\nalpha\4š³æÌ\t™³¦þ\3\rblending\1\0\2\14threshold\4\0€€ ÿ\3\14colorcode\f#120f17\1\0\1\nscope\tline\0", "config", "deadcolumn.nvim")
 time([[Config for deadcolumn.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+try_loadstring("\27LJ\2\ne\0\1\4\1\4\0\14-\1\0\0009\1\0\1B\1\1\2\15\0\1\0X\2\5€-\1\0\0009\1\1\0015\3\2\0B\1\2\1X\1\3€-\1\0\0009\1\3\1B\1\1\1K\0\1\0\0À\rcomplete\1\0\1\vselect\2\fconfirm\fvisibleƒ\4\1\0\b\0\29\0=6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\t\0005\4\6\0009\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\a\0049\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\b\4=\4\4\0035\4\n\0=\4\a\0035\4\r\0009\5\v\0009\5\f\5)\aüÿB\5\2\2=\5\14\0049\5\v\0009\5\f\5)\a\4\0B\5\2\2=\5\15\0043\5\16\0=\5\17\0049\5\v\0009\5\18\5B\5\1\2=\5\19\0049\5\v\0009\5\20\0055\a\21\0B\5\2\2=\5\22\0049\5\v\0009\5\20\0055\a\23\0B\5\2\2=\5\24\4=\4\v\0039\4\3\0009\4\25\0044\6\4\0005\a\26\0>\a\1\0065\a\27\0>\a\2\0065\a\28\0>\a\3\6B\4\2\2=\4\25\3B\1\2\0012\0\0€K\0\1\0\1\0\1\tname\vsnippy\1\0\1\tname\fcopilot\1\0\1\tname\rnvim_lsp\fsources\n<C-y>\1\0\1\vselect\2\t<CR>\1\0\1\vselect\1\fconfirm\n<C-e>\nabort\14<C-Space>\0\n<C-d>\n<C-u>\1\0\0\16scroll_docs\fmapping\1\0\1\16completeopt\26menu,menuone,noinsert\1\0\0\18documentation\15completion\1\0\0\rbordered\vwindow\vconfig\nsetup\bcmp\frequire\0", "config", "nvim-cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: todo-comments.nvim
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\2\nê\3\0\0\4\0\26\0\"5\0\21\0005\1\3\0005\2\0\0005\3\1\0=\3\2\2=\2\4\0015\2\5\0=\2\6\0015\2\a\0=\2\b\0015\2\t\0005\3\n\0=\3\2\2=\2\v\0015\2\f\0005\3\r\0=\3\2\2=\2\14\0015\2\15\0005\3\16\0=\3\2\2=\2\17\0015\2\18\0005\3\19\0=\3\2\2=\2\20\1=\1\22\0006\1\23\0'\3\24\0B\1\2\0029\1\25\1\18\3\0\0B\1\2\1K\0\1\0\nsetup\18todo-comments\frequire\rkeywords\1\0\0\tTEST\1\4\0\0\fTESTING\vPASSED\vFAILED\1\0\2\ticon\tó°™¨\ncolor\ttest\tNOTE\1\2\0\0\tINFO\1\0\2\ticon\bî® \ncolor\thint\tPERF\1\4\0\0\nOPTIM\16PERFORMANCE\rOPTIMIZE\1\0\1\ticon\bï” \tWARN\1\3\0\0\fWARNING\bXXX\1\0\2\ticon\bï±\ncolor\fwarning\tHACK\1\0\2\ticon\bî…\ncolor\fwarning\tTODO\1\0\2\ticon\bï€Œ\ncolor\tinfo\bFIX\1\0\0\balt\1\5\0\0\nFIXME\bBUG\nFIXIT\nISSUE\1\0\2\ticon\bï†ˆ\ncolor\nerror\0", "config", "todo-comments.nvim")
 time([[Config for todo-comments.nvim]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\nì\1\0\0\4\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\0016\0\n\0009\0\v\0'\2\f\0B\0\2\1K\0\1\0 command! Lex NvimTreeToggle\bcmd\bvim\ffilters\1\0\2\16git_ignored\1\rdotfiles\1\rrenderer\1\0\1\16group_empty\1\tview\1\0\1\nwidth\3\30\1\0\1\fsort_by\19case_sensitive\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-comment
-time([[Config for nvim-comment]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17nvim_comment\frequire\0", "config", "nvim-comment")
-time([[Config for nvim-comment]], false)
+-- Config for: neodev.nvim
+time([[Config for neodev.nvim]], true)
+try_loadstring("\27LJ\2\nu\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\flibrary\1\0\0\fplugins\1\0\1\ntypes\2\1\2\0\0\16nvim-dap-ui\nsetup\vneodev\frequire\0", "config", "neodev.nvim")
+time([[Config for neodev.nvim]], false)
 -- Config for: fidget.nvim
 time([[Config for fidget.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vfidget\frequire\0", "config", "fidget.nvim")
@@ -380,14 +390,14 @@ time([[Config for fidget.nvim]], false)
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
 time([[Config for nvim-colorizer.lua]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\2\ne\0\1\4\1\4\0\14-\1\0\0009\1\0\1B\1\1\2\15\0\1\0X\2\5€-\1\0\0009\1\1\0015\3\2\0B\1\2\1X\1\3€-\1\0\0009\1\3\1B\1\1\1K\0\1\0\0À\rcomplete\1\0\1\vselect\2\fconfirm\fvisibleƒ\4\1\0\b\0\29\0=6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\t\0005\4\6\0009\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\a\0049\5\3\0009\5\4\0059\5\5\5B\5\1\2=\5\b\4=\4\4\0035\4\n\0=\4\a\0035\4\r\0009\5\v\0009\5\f\5)\aüÿB\5\2\2=\5\14\0049\5\v\0009\5\f\5)\a\4\0B\5\2\2=\5\15\0043\5\16\0=\5\17\0049\5\v\0009\5\18\5B\5\1\2=\5\19\0049\5\v\0009\5\20\0055\a\21\0B\5\2\2=\5\22\0049\5\v\0009\5\20\0055\a\23\0B\5\2\2=\5\24\4=\4\v\0039\4\3\0009\4\25\0044\6\4\0005\a\26\0>\a\1\0065\a\27\0>\a\2\0065\a\28\0>\a\3\6B\4\2\2=\4\25\3B\1\2\0012\0\0€K\0\1\0\1\0\1\tname\vsnippy\1\0\1\tname\fcopilot\1\0\1\tname\rnvim_lsp\fsources\n<C-y>\1\0\1\vselect\2\t<CR>\1\0\1\vselect\1\fconfirm\n<C-e>\nabort\14<C-Space>\0\n<C-d>\n<C-u>\1\0\0\16scroll_docs\fmapping\1\0\1\16completeopt\26menu,menuone,noinsert\1\0\0\18documentation\15completion\1\0\0\rbordered\vwindow\vconfig\nsetup\bcmp\frequire\0", "config", "nvim-cmp")
-time([[Config for nvim-cmp]], false)
--- Config for: marks.nvim
-time([[Config for marks.nvim]], true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\nmarks\frequire\0", "config", "marks.nvim")
-time([[Config for marks.nvim]], false)
+-- Config for: nvim-comment
+time([[Config for nvim-comment]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17nvim_comment\frequire\0", "config", "nvim-comment")
+time([[Config for nvim-comment]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

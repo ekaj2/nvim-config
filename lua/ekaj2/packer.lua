@@ -185,6 +185,15 @@ return require("packer").startup(function(use)
 	use("theHamsta/nvim-dap-virtual-text")
 
 	use({
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({
+				library = { plugins = { "nvim-dap-ui" }, types = true },
+			})
+		end,
+	})
+
+	use({
 		"kylechui/nvim-surround",
 		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 		config = function()
