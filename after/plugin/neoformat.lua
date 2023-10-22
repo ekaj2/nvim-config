@@ -28,7 +28,7 @@ vim.g.neoformat_enabled_python = { "autopep8" }
 
 -- using this instead of `silent Neoformat`
 -- autocmd VimEnter * autocmd BufWritePre * silent Neoformat
-vim.g.neoformat_only_msg_on_error = 1
+vim.g.neoformat_only_msg_on_error = 0
 
 function _Conditional_neoformat()
 	local file_path = vim.fn.expand("%:p")
