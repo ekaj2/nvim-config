@@ -45,7 +45,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
-		{ run = ":TSUpdate" },
+		run = ":TSUpdate",
 	})
 
 	use("theprimeagen/harpoon")
@@ -480,6 +480,44 @@ return require("packer").startup(function(use)
 		"terrortylor/nvim-comment",
 		config = function()
 			require("nvim_comment").setup()
+		end,
+	})
+
+	use({
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+		config = function()
+			require("refactoring").setup()
+		end,
+	})
+
+	-- Really not that much more useful than Neovim default
+	-- use({
+	-- 	"nvim-lualine/lualine.nvim",
+	-- 	requires = { "nvim-tree/nvim-web-devicons", opt = true },
+	-- })
+
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			local hooks = require("ibl.hooks")
+			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+				vim.api.nvim_set_hl(0, "IblIndent", { fg = "#393552" })
+				-- vim.api.nvim_set_hl(0, "IblIndent", { fg = "#ea9a97" })
+			end)
+
+			require("ibl").setup({
+				indent = {
+					char = "▏",
+				},
+				exclude = {
+					filetypes = { "dashboard" }, -- to find one do :lua print(vim.bo.filetype)
+					buftypes = { "terminal" },
+				},
+			})
 		end,
 	})
 end)
