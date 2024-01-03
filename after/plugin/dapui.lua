@@ -24,9 +24,10 @@ end
 
 vim.g.python3_host_prog = "/Users/eagle/Library/Caches/pypoetry/virtualenvs/nvim-q2Inv08s-py3.11/bin/python"
 
-dap_python.resolve_python = function()
-	return Get_poetry_python_path()
-end
+-- uncomment this to use poetry python!
+-- dap_python.resolve_python = function()
+-- 	return Get_poetry_python_path()
+-- end
 
 -- MUST INSTALL debugpy INTO VIRTUAL ENVIRONMENT!
 

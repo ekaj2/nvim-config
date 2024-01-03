@@ -7,6 +7,7 @@ lsp_zero.ensure_installed({
 	"tsserver",
 	"html",
 	"eslint",
+	"gopls",
 })
 
 -- see :help lsp-zero-keybindings

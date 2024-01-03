@@ -36,6 +36,57 @@ vim.keymap.set("n", "<leader>ss", function()
 	})
 end)
 
+-- this doesn't work, maybe come back later
+-- UPDATE: had to install ripgrep
+vim.keymap.set("n", "<leader>sv", function()
+	builtin.grep_string({
+		path_display = {
+			-- "tail",
+			-- shorten = 4,
+		}, -- see :h telescope.defaults.path_display
+		wrap_results = true,
+	})
+end)
+
+-- for django url name matching to jump to the spot in urls.py
+vim.keymap.set("n", "<leader>gu", function()
+	builtin.grep_string({
+		-- search = 'your_search_term', -- Replace with your search term
+		use_regex = true, -- Allows for using regex
+		additional_args = function(opts)
+			return { "-g", "urls.py" }
+		end,
+	})
+end)
+-- for django templates
+vim.keymap.set("n", "<leader>gf", function()
+	-- Yank the text within the nearest quotes
+	vim.cmd('normal! "vyiW')
+
+	-- Get the yanked text
+	local filename = vim.fn.getreg("v")
+	-- remove all non-alphanumeric characters
+	filename = filename:gsub("[^%w]", "")
+
+	-- for debugging
+	-- vim.api.nvim_echo({ { filename, "White" } }, true, {})
+	-- vim.cmd("sleep 2000m") -- wait for 2 seconds
+	-- vim.cmd("echohl None")
+	-- vim.cmd('echon ""')
+
+	if filename ~= "" then
+		require("telescope.builtin").find_files({
+			-- hidden = true,
+			default_text = filename,
+		})
+	else
+		-- Fallback to generic file search if no text yanked
+		require("telescope.builtin").find_files({
+			hidden = true,
+		})
+	end
+end)
+
 -- st for "structure"
 vim.keymap.set("n", "<leader>st", function()
 	builtin.lsp_document_symbols({

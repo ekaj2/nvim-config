@@ -143,41 +143,41 @@ return require("packer").startup(function(use)
 	--     --config = function() require("minintro").setup({ color = "#98c379" }) end
 	-- }
 
-	use({
-		"glepnir/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("dashboard").setup({
-				-- config
-				config = {
-					week_header = {
-						enable = true,
-					},
-					shortcut = {
-						{
-							icon = " ",
-							icon_hl = "@variable",
-							desc = "Files",
-							group = "Label",
-							action = "Telescope find_files",
-							key = "f",
-						},
-						{
-							desc = " Neovim Config",
-							group = "Number",
-							action = ":e ~/.config/nvim/",
-							key = "c",
-						},
-					},
-					project = { enable = false },
-					footer = {
-						"It's a good day to code. ☔️",
-					},
-				},
-			})
-		end,
-		requires = { "nvim-tree/nvim-web-devicons" },
-	})
+	-- use({
+	-- 	"glepnir/dashboard-nvim",
+	-- 	event = "VimEnter",
+	-- 	config = function()
+	-- 		require("dashboard").setup({
+	-- 			-- config
+	-- 			config = {
+	-- 				week_header = {
+	-- 					enable = true,
+	-- 				},
+	-- 				shortcut = {
+	-- 					{
+	-- 						icon = " ",
+	-- 						icon_hl = "@variable",
+	-- 						desc = "Files",
+	-- 						group = "Label",
+	-- 						action = "Telescope find_files",
+	-- 						key = "f",
+	-- 					},
+	-- 					{
+	-- 						desc = " Neovim Config",
+	-- 						group = "Number",
+	-- 						action = ":e ~/.config/nvim/",
+	-- 						key = "c",
+	-- 					},
+	-- 				},
+	-- 				project = { enable = false },
+	-- 				footer = {
+	-- 					"It's a good day to code. ☔️",
+	-- 				},
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	requires = { "nvim-tree/nvim-web-devicons" },
+	-- })
 
 	use("mfussenegger/nvim-dap")
 	use("mfussenegger/nvim-dap-python")
@@ -517,6 +517,110 @@ return require("packer").startup(function(use)
 					filetypes = { "dashboard" }, -- to find one do :lua print(vim.bo.filetype)
 					buftypes = { "terminal" },
 				},
+				scope = {
+					show_start = false,
+					show_end = false,
+				},
+			})
+		end,
+	})
+
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({
+				window = {
+					backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+					-- height and width can be:
+					-- * an absolute number of cells when > 1
+					-- * a percentage of the width / height of the editor when <= 1
+					-- * a function that returns the width or the height
+					width = 80, -- width of the Zen window
+					height = 1, -- height of the Zen window
+					-- by default, no options are changed for the Zen window
+					-- uncomment any of the options below, or add other vim.wo options you want to apply
+					options = {
+						-- signcolumn = "no", -- disable signcolumn
+						number = false, -- disable number column
+						relativenumber = false, -- disable relative numbers
+						-- cursorline = false, -- disable cursorline
+						-- cursorcolumn = false, -- disable cursor column
+						-- foldcolumn = "0", -- disable fold column
+						-- list = false, -- disable whitespace characters
+					},
+				},
+				plugins = {
+					-- disable some global vim options (vim.o...)
+					-- comment the lines to not apply the options
+					options = {
+						enabled = true,
+						ruler = false, -- disables the ruler text in the cmd line area
+						showcmd = false, -- disables the command in the last line of the screen
+						-- you may turn on/off statusline in zen mode by setting 'laststatus'
+						-- statusline will be shown only if 'laststatus' == 3
+						laststatus = 0, -- turn off the statusline in zen mode
+					},
+					twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+					gitsigns = { enabled = false }, -- disables git signs
+					tmux = { enabled = false }, -- disables the tmux statusline
+				},
+				-- callback where you can add custom code when the Zen window opens
+				on_open = function(win)
+					-- enable wrap
+					vim.opt.wrap = true
+				end,
+				-- callback where you can add custom code when the Zen window closes
+				on_close = function() end,
+			})
+		end,
+	})
+
+	use({
+		"folke/twilight.nvim",
+		config = function()
+			require("twilight").setup({
+				dimming = {
+					alpha = 0.75, -- amount of dimming
+
+					-- we try to get the foreground from the highlight groups or fallback color
+					color = { "Normal", "#aabbff" },
+				},
+
+				treesitter = false,
+				context = 1,
+				expand = {
+					-- "function",
+					-- "method",
+					-- "table",
+					-- "if_statement",
+				},
+			})
+		end,
+	})
+
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+
+		config = function()
+			require("catppuccin").setup({
+				flavour = "latte", -- latte, frappe, macchiato, mocha
+				background = { -- :h background
+					light = "latte",
+					dark = "mocha",
+				},
+			})
+		end,
+	})
+
+	use("madox2/vim-ai")
+
+	use({
+		"TrevorS/uuid-nvim",
+		config = function()
+			require("uuid-nvim").setup({
+				case = "lower",
+				quotes = "none",
 			})
 		end,
 	})

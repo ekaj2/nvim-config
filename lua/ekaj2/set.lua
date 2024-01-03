@@ -1,3 +1,6 @@
+-- have to set this before using vim-ai plugin since it requires python3 support
+vim.g.python3_host_prog = "/Users/eagle/Library/Caches/pypoetry/virtualenvs/nvim-q2Inv08s-py3.11/bin/python"
+
 --vim.opt.shortmess:append("I") -- Don't pass messages to |ins-completion-menu|.
 
 vim.opt.guicursor = "" -- fat cursor even in insert mode
@@ -24,6 +27,7 @@ vim.opt.hlsearch = true -- dont keep search highlighted
 vim.opt.incsearch = true -- live search
 
 vim.opt.wrap = false
+vim.opt.breakindent = true
 vim.opt.linebreak = true -- word wrapping
 
 vim.opt.scrolloff = 4
