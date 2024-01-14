@@ -32,7 +32,7 @@ vim.keymap.set("n", "<leader>ss", function()
 			-- "tail",
 			-- shorten = 4,
 		}, -- see :h telescope.defaults.path_display
-		wrap_results = true,
+		wrap_results = false,
 	})
 end)
 

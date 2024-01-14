@@ -431,23 +431,23 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"Bekaboo/deadcolumn.nvim",
-		config = function()
-			local opts = {
-				scope = "line",
-				blending = {
-					threshold = 0.75,
-					colorcode = "#120f17",
-				},
-				warning = {
-					alpha = 0.2,
-					colorcode = "#bb0000",
-				},
-			}
-			require("deadcolumn").setup(opts)
-		end,
-	})
+	-- use({
+	-- 	"Bekaboo/deadcolumn.nvim",
+	-- 	config = function()
+	-- 		local opts = {
+	-- 			scope = "line",
+	-- 			blending = {
+	-- 				threshold = 0.75,
+	-- 				colorcode = "#120f17",
+	-- 			},
+	-- 			warning = {
+	-- 				alpha = 0.2,
+	-- 				colorcode = "#bb0000",
+	-- 			},
+	-- 		}
+	-- 		require("deadcolumn").setup(opts)
+	-- 	end,
+	-- })
 
 	-- TODO: Needs 0.10. Come back later and see about swapping for scrollview
 	--
@@ -615,12 +615,42 @@ return require("packer").startup(function(use)
 
 	use("madox2/vim-ai")
 
+	-- use({
+	-- 	"TrevorS/uuid-nvim",
+	-- 	config = function()
+	-- 		require("uuid-nvim").setup({
+	-- 			case = "lower",
+	-- 			quotes = "none",
+	-- 		})
+	-- 	end,
+	-- })
 	use({
-		"TrevorS/uuid-nvim",
+		"~/projects/uuid-nvim",
 		config = function()
 			require("uuid-nvim").setup({
 				case = "lower",
 				quotes = "none",
+				insert = "before",
+			})
+		end,
+	})
+
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	})
+
+	use({
+		"nvim-neotest/neotest-python",
+		config = function()
+			require("neotest").setup({
+				adapters = {
+					require("neotest-python"),
+				},
 			})
 		end,
 	})

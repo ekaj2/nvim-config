@@ -5,6 +5,7 @@ MY_MESSAGE = [[
 
      C-x: cancel
      C-k: yank code from last answer
+     <space>: select session in <c-o> panel
 
 ]]
 
