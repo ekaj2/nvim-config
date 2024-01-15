@@ -67,3 +67,31 @@ vim.keymap.set("n", "<leader>ab", function()
 end, { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>TroubleToggle<CR>", { noremap = true, silent = true })
+
+-- for neotest https://github.com/nvim-neotest/neotest
+local neotest = require("neotest")
+
+-- "test panel"
+vim.keymap.set("n", "<leader>tp", function()
+	neotest.output_panel.toggle()
+end, { noremap = true, silent = true })
+
+-- "test window"
+vim.keymap.set("n", "<leader>tw", function()
+	neotest.output.open()
+end, { noremap = true, silent = true })
+
+-- "test this"
+vim.keymap.set("n", "<leader>tt", function()
+	neotest.run.run()
+end, { noremap = true, silent = true })
+
+-- "test file"
+vim.keymap.set("n", "<leader>tf", function()
+	require("neotest").run.run(vim.fn.expand("%"))
+end, { noremap = true, silent = true })
+
+-- "test summary"
+vim.keymap.set("n", "<leader>ts", function()
+	neotest.summary.toggle()
+end, { noremap = true, silent = true })

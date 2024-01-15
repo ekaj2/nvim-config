@@ -50,7 +50,9 @@ return require("packer").startup(function(use)
 
 	use("theprimeagen/harpoon")
 	use("mbbill/undotree")
+
 	use("tpope/vim-fugitive")
+	use("tpope/vim-rhubarb") -- for GitHub...unfortunately needs netrw - see init.lua
 
 	use({
 		"VonHeikemen/lsp-zero.nvim",
