@@ -637,6 +637,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({ "antoinemadec/FixCursorHold.nvim" })
+
 	use({
 		"nvim-neotest/neotest",
 		requires = {
@@ -648,12 +650,5 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-neotest/neotest-python",
-		config = function()
-			require("neotest").setup({
-				adapters = {
-					require("neotest-python"),
-				},
-			})
-		end,
 	})
 end)
