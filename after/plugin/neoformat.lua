@@ -26,6 +26,18 @@ vim.g.neoformat_enabled_json = { "fixjson" }
 
 vim.g.neoformat_enabled_python = { "autopep8" }
 
+vim.g.neoformat_enabled_go = { "gofmt" }
+
+vim.g.neoformat_go_gofmt = {
+	exe = "goimports",
+	stdin = true,
+}
+
+-- vim.g.neoformat_go_goimport = {
+-- 	exe = "goimport",
+-- 	stdin = true,
+-- }
+
 -- using this instead of `silent Neoformat`
 -- autocmd VimEnter * autocmd BufWritePre * silent Neoformat
 vim.g.neoformat_only_msg_on_error = 0

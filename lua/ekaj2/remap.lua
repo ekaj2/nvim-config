@@ -95,3 +95,5 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>ts", function()
 	neotest.summary.toggle()
 end, { noremap = true, silent = true })
+
+-- open the doc on a method (K)

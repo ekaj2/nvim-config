@@ -5,6 +5,8 @@ MY_MESSAGE = [[
 
      C-x: cancel
      C-k: yank code from last answer
+     C-s: open system prompt
+     C-o: open settings panel
      <space>: select session in <c-o> panel
 
 ]]

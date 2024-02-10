@@ -14,3 +14,6 @@ snippet repeat
 	repeat
 		${2:what}
 	while ${1:condition}
+snippet djtimer
+	djtimer = await self.timer("${1:label}")
+	await djtimer.stop()

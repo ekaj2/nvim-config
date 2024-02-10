@@ -363,19 +363,19 @@ return require("packer").startup(function(use)
 
 	-- doesn't work rn, but maybe someday:
 	-- https://github.com/pwntester/octo.nvim#-features
-	-- use({
-	-- 	"pwntester/octo.nvim",
-	-- 	requires = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"nvim-telescope/telescope.nvim",
-	-- 		"nvim-tree/nvim-web-devicons",
-	-- 	},
-	-- 	config = function()
-	-- 		require("octo").setup({
-	-- 			timeout = 20000, -- timeout for requests between the remote server
-	-- 		})
-	-- 	end,
-	-- })
+	use({
+		"pwntester/octo.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("octo").setup({
+				-- timeout = 20000, -- timeout for requests between the remote server
+			})
+		end,
+	})
 
 	-- https://github.com/dhruvmanila/browser-bookmarks.nvim#supported-browsers
 
