@@ -96,4 +96,5 @@ vim.keymap.set("n", "<leader>ts", function()
 	neotest.summary.toggle()
 end, { noremap = true, silent = true })
 
--- open the doc on a method (K)
+-- open the doc on a method (K), this is vim.lsp.buf.hover() and pressing it again will jump into the doc
+-- https://github.com/neoclide/coc.nvim/issues/1405#issuecomment-1477886794
