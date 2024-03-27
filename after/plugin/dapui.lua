@@ -54,27 +54,30 @@ vim.keymap.set("n", "<Leader>do", function()
 end)
 
 -- di to step into
-vim.keymap.set("n", "<Leader>do", function()
+vim.keymap.set("n", "<Leader>di", function()
 	dap.step_into()
 end)
 
 vim.keymap.set("n", "<Leader>dr", function()
-	dap.repl.open()
+	dapui.open({ reset = true })
 end)
+
 vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
 	require("dap.ui.widgets").hover()
 end)
 vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
 	require("dap.ui.widgets").preview()
 end)
-vim.keymap.set("n", "<Leader>df", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set("n", "<Leader>ds", function()
-	local widgets = require("dap.ui.widgets")
-	widgets.centered_float(widgets.scopes)
-end)
+
+-- Doesn't close easily, need to figure that out
+-- vim.keymap.set("n", "<Leader>df", function()
+-- 	local widgets = require("dap.ui.widgets")
+-- 	widgets.centered_float(widgets.frames)
+-- end)
+-- vim.keymap.set("n", "<Leader>ds", function()
+-- 	local widgets = require("dap.ui.widgets")
+-- 	widgets.centered_float(widgets.scopes)
+-- end)
 
 -- TODO: look into dap-widgets
 

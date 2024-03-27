@@ -93,21 +93,22 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({ "nvim-neotest/nvim-nio" })
+
 	use({
 		"xiyaowong/transparent.nvim",
 	})
 
-	---- TODO: come back to this to see how I can use it better?
-	--
-	-- UPDATE: still not working as of 10/15/2023...come back later...
-	-- use({
-	-- 	"rcarriga/nvim-notify",
-	-- 	config = function()
-	-- 		require("notify").setup({
-	-- 			background_colour = "#77GG44",
-	-- 		})
-	-- 	end,
-	-- })
+	use({
+		"rcarriga/nvim-notify",
+		config = function()
+			local notify = require("notify")
+			notify.setup({ background_colour = "#191724" })
+			vim.notify = notify
+		end,
+	})
+
+	use({ "folke/noice.nvim", as = "noice" })
 
 	use({
 		"ekaj2/ChatGPT.nvim",
@@ -354,12 +355,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	-- use({
-	-- 	"nvim-telescope/telescope-frecency.nvim",
-	-- 	config = function()
-	-- 		require("telescope").load_extension("frecency")
-	-- 	end,
-	-- })
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+	})
 
 	-- doesn't work rn, but maybe someday:
 	-- https://github.com/pwntester/octo.nvim#-features
@@ -650,5 +651,8 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-neotest/neotest-python",
+	})
+	use({
+		"NoahTheDuke/vim-just",
 	})
 end)

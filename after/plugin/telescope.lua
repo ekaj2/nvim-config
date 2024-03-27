@@ -177,4 +177,18 @@ require("telescope").setup({
 			},
 		},
 	},
+	extensions = {
+		frecency = {
+			show_scores = true,
+			show_unindexed = true,
+			ignore_patterns = { "*.git/*", "*/tmp/*" },
+			disable_devicons = false,
+			default_workspace = "CWD",
+			hide_current_buffer = true,
+			db_safe_mode = true,
+			workspaces = {
+				["reddy"] = "/Users/eagle/reddy",
+			},
+		},
+	},
 })
