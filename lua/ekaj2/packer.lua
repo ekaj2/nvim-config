@@ -103,7 +103,10 @@ return require("packer").startup(function(use)
 		"rcarriga/nvim-notify",
 		config = function()
 			local notify = require("notify")
-			notify.setup({ background_colour = "#191724" })
+			notify.setup({
+				background_colour = "#191724",
+				render = "wrapped-compact",
+			})
 			vim.notify = notify
 		end,
 	})
@@ -124,21 +127,6 @@ return require("packer").startup(function(use)
 			"nvim-telescope/telescope.nvim",
 		},
 	})
-
-	-- Not working rn:
-	-- https://github.com/folke/noice.nvim
-	-- use {
-	--     "folke/noice.nvim",
-	--     event = "VeryLazy",
-	--     requires = {
-	--         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-	--         "MunifTanjim/nui.nvim",
-	--         -- OPTIONAL:
-	--         --   `nvim-notify` is only needed, if you want to use the notification view.
-	--         --   If not available, we use `mini` as the fallback
-	--         "rcarriga/nvim-notify",
-	--     }
-	-- }
 
 	-- use {
 	--     "eoh-bse/minintro.nvim",
@@ -314,6 +302,7 @@ return require("packer").startup(function(use)
 					-- { name = 'luasnip' }, -- For luasnip users.
 					-- { name = 'ultisnips' }, -- For ultisnips users.
 					{ name = "snippy" }, -- For snippy users.
+					{ name = "vim-dadbod-completion" },
 				}), --,{
 				--				{ name = "buffer" },
 				--			}),
@@ -654,5 +643,60 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"NoahTheDuke/vim-just",
+	})
+
+	-- use({
+	-- 	"coffebar/transfer.nvim",
+	-- 	cmd = {
+	-- 		"TransferInit",
+	-- 		"DiffRemote",
+	-- 		"TransferUpload",
+	-- 		"TransferDownload",
+	-- 		"TransferDirDiff",
+	-- 		"TransferRepeat",
+	-- 	},
+	-- 	config = function()
+	-- 		require("transfer").setup()
+	-- 	end,
+	-- })
+
+	use({
+		"OscarCreator/rsync.nvim",
+		run = "make",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("rsync").setup({
+				-- triggers `RsyncUp` when fugitive thinks something might have changed in the repo.
+				fugitive_sync = false,
+				-- triggers `RsyncUp` when you save a file.
+				sync_on_save = false,
+				-- the path to the project configuration
+				project_config_path = ".nvim/rsync.toml",
+				-- called when the rsync command exits, provides the exit code and the used command
+				on_exit = function(code, command) end,
+				-- called when the rsync command prints to stderr, provides the data and the used command
+				on_stderr = function(data, command) end,
+			})
+		end,
+	})
+
+	use({ "tpope/vim-dadbod" })
+	use({ "kristijanhusak/vim-dadbod-completion" })
+	use({
+		"kristijanhusak/vim-dadbod-ui",
+		requires = {
+			{ "tpope/vim-dadbod" },
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" } },
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		config = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
 	})
 end)
