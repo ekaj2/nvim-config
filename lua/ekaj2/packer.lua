@@ -48,7 +48,12 @@ return require("packer").startup(function(use)
 		run = ":TSUpdate",
 	})
 
-	use("theprimeagen/harpoon")
+	use({
+		"theprimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+
 	use("mbbill/undotree")
 
 	use("tpope/vim-fugitive")
@@ -111,7 +116,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "folke/noice.nvim", as = "noice" })
+	-- use({ "folke/noice.nvim", as = "noice" })
 
 	use({
 		"ekaj2/ChatGPT.nvim",
@@ -645,40 +650,40 @@ return require("packer").startup(function(use)
 		"NoahTheDuke/vim-just",
 	})
 
-	-- use({
-	-- 	"coffebar/transfer.nvim",
-	-- 	cmd = {
-	-- 		"TransferInit",
-	-- 		"DiffRemote",
-	-- 		"TransferUpload",
-	-- 		"TransferDownload",
-	-- 		"TransferDirDiff",
-	-- 		"TransferRepeat",
-	-- 	},
-	-- 	config = function()
-	-- 		require("transfer").setup()
-	-- 	end,
-	-- })
-
 	use({
-		"OscarCreator/rsync.nvim",
-		run = "make",
-		requires = { "nvim-lua/plenary.nvim" },
+		"coffebar/transfer.nvim",
+		cmd = {
+			"TransferInit",
+			"DiffRemote",
+			"TransferUpload",
+			"TransferDownload",
+			"TransferDirDiff",
+			"TransferRepeat",
+		},
 		config = function()
-			require("rsync").setup({
-				-- triggers `RsyncUp` when fugitive thinks something might have changed in the repo.
-				fugitive_sync = false,
-				-- triggers `RsyncUp` when you save a file.
-				sync_on_save = false,
-				-- the path to the project configuration
-				project_config_path = ".nvim/rsync.toml",
-				-- called when the rsync command exits, provides the exit code and the used command
-				on_exit = function(code, command) end,
-				-- called when the rsync command prints to stderr, provides the data and the used command
-				on_stderr = function(data, command) end,
-			})
+			require("transfer").setup()
 		end,
 	})
+
+	-- use({
+	-- 	"OscarCreator/rsync.nvim",
+	-- 	run = "make",
+	-- 	requires = { "nvim-lua/plenary.nvim" },
+	-- 	config = function()
+	-- 		require("rsync").setup({
+	-- 			-- triggers `RsyncUp` when fugitive thinks something might have changed in the repo.
+	-- 			fugitive_sync = false,
+	-- 			-- triggers `RsyncUp` when you save a file.
+	-- 			sync_on_save = false,
+	-- 			-- the path to the project configuration
+	-- 			project_config_path = ".nvim/rsync.toml",
+	-- 			-- called when the rsync command exits, provides the exit code and the used command
+	-- 			on_exit = function(code, command) end,
+	-- 			-- called when the rsync command prints to stderr, provides the data and the used command
+	-- 			on_stderr = function(data, command) end,
+	-- 		})
+	-- 	end,
+	-- })
 
 	use({ "tpope/vim-dadbod" })
 	use({ "kristijanhusak/vim-dadbod-completion" })
@@ -699,4 +704,8 @@ return require("packer").startup(function(use)
 			vim.g.db_ui_use_nerd_fonts = 1
 		end,
 	})
+
+	use({ "ThePrimeagen/vim-be-good" })
+
+	use({ "pteroctopus/faster.nvim" })
 end)

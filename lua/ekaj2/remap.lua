@@ -56,7 +56,11 @@ vim.keymap.set("n", "<leader>ad", function()
 end)
 
 -- rename with lsp
-vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+-- can't use 'r' because I'm using that with qwer harpoon bindings
+-- using 'i' for "interactive" to be the beginning of refactor keybindings
+vim.keymap.set("n", "<leader>ir", function()
+	vim.lsp.buf.rename()
+end, { noremap = true, silent = true })
 
 -- browsing plugin "arc search" "arc bookmarks"
 vim.keymap.set("n", "<leader>as", function()
@@ -74,6 +78,11 @@ local neotest = require("neotest")
 -- "test panel"
 vim.keymap.set("n", "<leader>tp", function()
 	neotest.output_panel.toggle()
+end, { noremap = true, silent = true })
+
+-- "test panel"
+vim.keymap.set("n", "<leader>tcp", function()
+	neotest.output_panel.clear()
 end, { noremap = true, silent = true })
 
 -- "test window"
