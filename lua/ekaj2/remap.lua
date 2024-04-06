@@ -95,6 +95,12 @@ vim.keymap.set("n", "<leader>tt", function()
 	neotest.run.run()
 end, { noremap = true, silent = true })
 
+-- "test debug this"
+-- https://github.com/mfussenegger/nvim-dap/discussions/961
+vim.keymap.set("n", "<leader>tdt", function()
+	neotest.run.run({ strategy = "dap" })
+end, { noremap = true, silent = true })
+
 -- "test file"
 vim.keymap.set("n", "<leader>tf", function()
 	require("neotest").run.run(vim.fn.expand("%"))

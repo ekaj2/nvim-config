@@ -9,7 +9,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.2",
+		-- tag = "0.1.2",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
@@ -28,14 +28,14 @@ return require("packer").startup(function(use)
 			require("nvim-tree").setup({
 				sort_by = "case_sensitive",
 				view = {
-					width = 30,
+					width = 35,
 				},
 				renderer = {
 					group_empty = false,
 				},
-				filters = {
-					dotfiles = false,
-					git_ignored = false,
+				filters = { -- HI to toggle both of these
+					dotfiles = true,
+					git_ignored = true,
 				},
 			})
 			-- make :Lex do :NvimTreeToggle
@@ -104,17 +104,17 @@ return require("packer").startup(function(use)
 		"xiyaowong/transparent.nvim",
 	})
 
-	use({
-		"rcarriga/nvim-notify",
-		config = function()
-			local notify = require("notify")
-			notify.setup({
-				background_colour = "#191724",
-				render = "wrapped-compact",
-			})
-			vim.notify = notify
-		end,
-	})
+	-- use({
+	-- 	"rcarriga/nvim-notify",
+	-- 	config = function()
+	-- 		local notify = require("notify")
+	-- 		notify.setup({
+	-- 			background_colour = "#191724",
+	-- 			render = "wrapped-compact",
+	-- 		})
+	-- 		vim.notify = notify
+	-- 	end,
+	-- })
 
 	-- use({ "folke/noice.nvim", as = "noice" })
 
@@ -262,7 +262,7 @@ return require("packer").startup(function(use)
 
 	use({ "dcampos/cmp-snippy" })
 
-	use({ "honza/vim-snippets" })
+	-- use({ "honza/vim-snippets" })
 
 	-- https://github.com/hrsh7th/nvim-cmp
 	use({
@@ -349,12 +349,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-	})
+	-- use({
+	-- 	"nvim-telescope/telescope-frecency.nvim",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("frecency")
+	-- 	end,
+	-- })
 
 	-- doesn't work rn, but maybe someday:
 	-- https://github.com/pwntester/octo.nvim#-features
@@ -368,6 +368,9 @@ return require("packer").startup(function(use)
 		config = function()
 			require("octo").setup({
 				-- timeout = 20000, -- timeout for requests between the remote server
+				suppress_missing_scope = {
+					projects_v2 = true,
+				},
 			})
 		end,
 	})
@@ -408,15 +411,16 @@ return require("packer").startup(function(use)
 	-- 	end,
 	-- })
 
-	use({
-		"j-hui/fidget.nvim",
-		tag = "legacy",
-		config = function()
-			require("fidget").setup({
-				-- options
-			})
-		end,
-	})
+	-- It's mega cool, but never really used this
+	-- use({
+	-- 	"j-hui/fidget.nvim",
+	-- 	tag = "legacy",
+	-- 	config = function()
+	-- 		require("fidget").setup({
+	-- 			-- options
+	-- 		})
+	-- 	end,
+	-- })
 
 	-- "": open menu
 	use("gennaro-tedesco/nvim-peekup")
@@ -610,7 +614,108 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use("madox2/vim-ai")
+	use({
+		"madox2/vim-ai",
+		as = "vim-ai",
+		config = function()
+			local initial_prompt = [[
+            Output only code. Do not include context.
+
+            ]]
+
+			local chat_engine_config = {
+				engine = "chat",
+				options = {
+					model = "gpt-4-turbo-preview",
+					endpoint_url = "https://api.openai.com/v1/chat/completions",
+					max_tokens = 1000,
+					temperature = 0.1,
+					request_timeout = 20,
+					selection_boundary = "",
+					enable_auth = true,
+					initial_prompt = initial_prompt, -- "Only output code. Do not use English, just provide code. Follow the instruction given.",
+				},
+				ui = {
+					paste_mode = false,
+				},
+			}
+
+			vim.g.vim_ai_complete = chat_engine_config
+			vim.g.vim_ai_edit = chat_engine_config
+		end,
+	})
+
+	use({
+		"robitx/gp.nvim",
+		config = function()
+			require("gp").setup({
+				chat_topic_gen_model = "gpt-4-turbo-preview",
+				agents = {
+					{
+						name = "ChatGPT4",
+						chat = true,
+						command = false,
+						-- string with model name or table with model name and parameters
+						model = { model = "gpt-4-1106-preview", temperature = 1.1, top_p = 1 },
+						-- system prompt (use this to specify the persona/role of the AI)
+						system_prompt = "You are a general AI assistant.\n\n"
+							.. "The user provided the additional info about how they would like you to respond:\n\n"
+							.. "- If you're unsure don't guess and say you don't know instead.\n"
+							.. "- Ask question if you need clarification to provide better answer.\n"
+							.. "- Think deeply and carefully from first principles step by step.\n"
+							.. "- Zoom out first to see the big picture and then zoom in to details.\n"
+							.. "- Use Socratic method to improve your thinking and coding skills.\n"
+							.. "- Don't elide any code from your output if the answer requires coding.\n"
+							.. "- Take a deep breath; You've got this!\n",
+					},
+					{
+						name = "ChatGPT3-5",
+						-- chat = true,
+						-- command = false,
+						-- -- string with model name or table with model name and parameters
+						-- model = { model = "gpt-3.5-turbo-1106", temperature = 1.1, top_p = 1 },
+						-- -- system prompt (use this to specify the persona/role of the AI)
+						-- system_prompt = "You are a general AI assistant.\n\n"
+						-- 	.. "The user provided the additional info about how they would like you to respond:\n\n"
+						-- 	.. "- If you're unsure don't guess and say you don't know instead.\n"
+						-- 	.. "- Ask question if you need clarification to provide better answer.\n"
+						-- 	.. "- Think deeply and carefully from first principles step by step.\n"
+						-- 	.. "- Zoom out first to see the big picture and then zoom in to details.\n"
+						-- 	.. "- Use Socratic method to improve your thinking and coding skills.\n"
+						-- 	.. "- Don't elide any code from your output if the answer requires coding.\n"
+						-- 	.. "- Take a deep breath; You've got this!\n",
+					},
+					{
+						name = "CodeGPT4",
+						chat = false,
+						command = true,
+						-- string with model name or table with model name and parameters
+						model = { model = "gpt-4-1106-preview", temperature = 0.8, top_p = 1 },
+						-- system prompt (use this to specify the persona/role of the AI)
+						system_prompt = "You are an AI working as a code editor.\n\n"
+							.. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n"
+							.. "START AND END YOUR ANSWER WITH:\n\n```",
+					},
+					{
+						name = "CodeGPT3-5",
+						-- chat = false,
+						-- command = true,
+						-- -- string with model name or table with model name and parameters
+						-- model = { model = "gpt-3.5-turbo-1106", temperature = 0.8, top_p = 1 },
+						-- -- system prompt (use this to specify the persona/role of the AI)
+						-- system_prompt = "You are an AI working as a code editor.\n\n"
+						-- 	.. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n"
+						-- 	.. "START AND END YOUR ANSWER WITH:\n\n```",
+					},
+				},
+			})
+
+			-- or setup with your own config (see Install > Configuration in Readme)
+			-- require("gp").setup(config)
+
+			-- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+		end,
+	})
 
 	-- use({
 	-- 	"TrevorS/uuid-nvim",
@@ -705,7 +810,25 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({ "ThePrimeagen/vim-be-good" })
+	-- use({ "ThePrimeagen/vim-be-good" })
 
-	use({ "pteroctopus/faster.nvim" })
+	-- use({
+	-- 	"pteroctopus/faster.nvim",
+	-- 	config = function()
+	-- 		require("faster").setup({})
+	-- 	end,
+	-- })
+
+	-- Gets detached buffer errors
+	-- use({
+	-- 	"LunarVim/bigfile.nvim",
+	-- })
+
+	-- requires Neovim 0.10.x
+	use({
+		"Bekaboo/dropbar.nvim",
+		requires = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+		},
+	})
 end)
