@@ -119,3 +119,8 @@ end, { noremap = true, silent = true })
 -- vim.keymap.set("n", "<leader>vn", function()
 -- 	require("telescope").extensions.notify.notify()
 -- end, { noremap = true, silent = true })
+
+-- Music
+vim.keymap.set("n", "<leader>mm", function()
+	require("melody").music_search()
+end, { noremap = true, silent = true })

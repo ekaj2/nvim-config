@@ -258,16 +258,24 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+		-- optionally, override the default options:
+		config = function()
+			require("tailwindcss-colorizer-cmp").setup({
+				color_square_width = 2,
+			})
+		end,
+	})
+
 	use({ "dcampos/nvim-snippy" })
-
 	use({ "dcampos/cmp-snippy" })
-
 	-- use({ "honza/vim-snippets" })
 
 	use({ "hrsh7th/cmp-calc" })
+	use({ "hrsh7th/cmp-emoji" })
 
-	-- use, e.g., / or ./ to trigger
-	use({ "hrsh7th/cmp-path" })
+	use({ "hrsh7th/cmp-path" }) -- / or ./ to trigger
 
 	-- https://github.com/hrsh7th/nvim-cmp
 	use({
@@ -279,6 +287,10 @@ return require("packer").startup(function(use)
 				window = {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
+				},
+				formatting = {
+					-- this only half works :(
+					format = require("tailwindcss-colorizer-cmp").formatter,
 				},
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -334,6 +346,7 @@ return require("packer").startup(function(use)
 					{ name = "vim-dadbod-completion" },
 					{ name = "calc" },
 					{ name = "path" },
+					{ name = "emoji" },
 				}), --,{
 				--				{ name = "buffer" },
 				--			}),
@@ -858,12 +871,23 @@ return require("packer").startup(function(use)
 		},
 	})
 
-	-- region: JavaScript debugging
 	use({
 		"microsoft/vscode-js-debug",
 		opt = true,
 		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 	})
 	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
-	-- endregion
+
+	-- use({
+	-- 	"whleucka/melody.nvim",
+	-- 	requires = {
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("melody").setup({
+	-- 			music_dir = "/Users/eagle/Music/mymusic/",
+	-- 		})
+	-- 	end,
+	-- })
 end)

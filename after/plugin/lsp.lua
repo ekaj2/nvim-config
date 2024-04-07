@@ -11,6 +11,7 @@ lsp_zero.ensure_installed({
 	"eslint",
 	"gopls",
 	"tailwindcss", -- npm install -g @tailwindcss/language-server
+	"ansiblels", -- npm install -g @tailwindcss/language-server
 })
 
 -- see :help lsp-zero-keybindings
