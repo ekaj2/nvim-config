@@ -264,11 +264,17 @@ return require("packer").startup(function(use)
 
 	-- use({ "honza/vim-snippets" })
 
+	use({ "hrsh7th/cmp-calc" })
+
+	-- use, e.g., / or ./ to trigger
+	use({ "hrsh7th/cmp-path" })
+
 	-- https://github.com/hrsh7th/nvim-cmp
 	use({
 		"hrsh7th/nvim-cmp",
 		config = function()
 			local cmp = require("cmp")
+			-- 7 * 4 =
 			cmp.setup({
 				window = {
 					completion = cmp.config.window.bordered(),
@@ -276,6 +282,24 @@ return require("packer").startup(function(use)
 				},
 				completion = {
 					completeopt = "menu,menuone,noinsert",
+				},
+				sorting = {
+					priority_weight = 2,
+					comparators = {
+						require("copilot_cmp.comparators").prioritize,
+
+						-- Below is the default comparitor list and order for nvim-cmp
+						cmp.config.compare.offset,
+						-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
 				},
 				mapping = {
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -308,6 +332,8 @@ return require("packer").startup(function(use)
 					-- { name = 'ultisnips' }, -- For ultisnips users.
 					{ name = "snippy" }, -- For snippy users.
 					{ name = "vim-dadbod-completion" },
+					{ name = "calc" },
+					{ name = "path" },
 				}), --,{
 				--				{ name = "buffer" },
 				--			}),
@@ -831,4 +857,13 @@ return require("packer").startup(function(use)
 			"nvim-telescope/telescope-fzf-native.nvim",
 		},
 	})
+
+	-- region: JavaScript debugging
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	})
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+	-- endregion
 end)

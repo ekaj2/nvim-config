@@ -115,7 +115,7 @@ end, { noremap = true, silent = true })
 -- https://github.com/neoclide/coc.nvim/issues/1405#issuecomment-1477886794
 -- q exits the hover popup
 
--- View notifications
-vim.keymap.set("n", "<leader>vn", function()
-	require("telescope").extensions.notify.notify()
-end, { noremap = true, silent = true })
+-- -- View notifications
+-- vim.keymap.set("n", "<leader>vn", function()
+-- 	require("telescope").extensions.notify.notify()
+-- end, { noremap = true, silent = true })
