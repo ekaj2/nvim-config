@@ -8,6 +8,7 @@ vim.g.neoformat_html_djlint = {
 		"--format-css",
 		"--format-js",
 		"--indent=2",
+		"--profile=django",
 	},
 	valid_exit_codes = { 0, 1, 130 },
 	stdin = true,
@@ -47,6 +48,7 @@ function _Conditional_neoformat()
 	local disable_paths = {
 		"reddy/lca-demo",
 		"reddy/pca-demo",
+		"reddy/dj-proj/mainapp/templates/",
 	}
 
 	for _, pattern in ipairs(disable_paths) do
