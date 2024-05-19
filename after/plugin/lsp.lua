@@ -10,6 +10,7 @@ lsp_zero.ensure_installed({
 	"html",
 	"eslint",
 	"gopls",
+	-- "rust_analyzer",
 	"tailwindcss", -- npm install -g @tailwindcss/language-server
 	"ansiblels", -- npm install -g @tailwindcss/language-server
 })
@@ -20,6 +21,13 @@ lsp_zero.ensure_installed({
 -- (Optional) Configure lua language server for neovim
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
+
+-- Using rustaceanvim instead
+-- lspconfig.rust_analyzer.setup {
+--   settings = {
+--     ['rust-analyzer'] = {},
+--   },
+-- }
 
 lsp_zero.set_sign_icons({
 	error = "✘",

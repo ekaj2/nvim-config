@@ -891,6 +891,11 @@ return require("packer").startup(function(use)
 	})
 	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
 
+	use({
+		"mrcjkb/rustaceanvim",
+		tag = "4.*", -- Recommended
+	})
+
 	-- use({
 	-- 	"whleucka/melody.nvim",
 	-- 	requires = {

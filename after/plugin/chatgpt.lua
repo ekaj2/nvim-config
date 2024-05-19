@@ -50,10 +50,10 @@ require("chatgpt").setup({
 		},
 	},
 	popup_layout = {
-		default = "center",
+		default = "right",
 		center = {
-			width = "95%",
-			height = "95%",
+			width = "85%",
+			height = "85%",
 		},
 		right = {
 			width = "45%",
