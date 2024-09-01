@@ -72,6 +72,10 @@ end, { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>tr", "<cmd>TroubleToggle<CR>", { noremap = true, silent = true })
 
+-- restart the lsp with lr
+vim.api.nvim_set_keymap("n", "<leader>lr", "<cmd>LspRestart<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>lr", "<cmd>LspRestart<CR>", { noremap = true, silent = true })
+
 -- for neotest https://github.com/nvim-neotest/neotest
 local neotest = require("neotest")
 

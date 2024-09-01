@@ -9,7 +9,10 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number" -- or both to do the line too
 
-vim.opt.foldmethod = "marker"
+vim.opt.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+
+-- vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "region,endregion"
 vim.opt.foldlevelstart = 99
 vim.opt.tabstop = 4
@@ -52,3 +55,5 @@ vim.api.nvim_exec(
 ]],
 	false
 )
+
+vim.g.netrw_silent = 1

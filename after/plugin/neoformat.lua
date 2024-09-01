@@ -5,10 +5,10 @@ vim.g.neoformat_html_djlint = {
 	args = {
 		"-", -- read from stdin
 		"--reformat",
-		"--format-css",
-		"--format-js",
-		"--indent=2",
-		"--profile=django",
+		-- "--format-css",
+		-- "--format-js",
+		-- "--indent=2",
+		-- "--profile=django",
 	},
 	valid_exit_codes = { 0, 1, 130 },
 	stdin = true,
@@ -26,6 +26,12 @@ vim.g.neoformat_json_fixjson = {
 vim.g.neoformat_enabled_json = { "fixjson" }
 
 vim.g.neoformat_enabled_python = { "autopep8" }
+
+vim.g.neoformat_try_node_exe = 1
+vim.g.neoformat_enabled_javascript = { "prettier" }
+-- vim.g.neoformat_javascript_prettier = {
+-- 	exe = "prettier",
+-- }
 
 vim.g.neoformat_enabled_go = { "gofmt" }
 
@@ -48,7 +54,11 @@ function _Conditional_neoformat()
 	local disable_paths = {
 		"reddy/lca-demo",
 		"reddy/pca-demo",
-		"reddy/dj-proj/mainapp/templates/",
+		-- "reddy/dj-proj/mainapp/templates/",
+		-- "reddy/flow_checks/flow_checks/templates/",
+		-- "reddy/dj-proj/systems_training/templates/",
+		-- "reddy/dj-proj/usage_tracking/templates/",
+		-- "reddy/dj-proj/components/",
 	}
 
 	for _, pattern in ipairs(disable_paths) do

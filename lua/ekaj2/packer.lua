@@ -90,26 +90,26 @@ return require("packer").startup(function(use)
 
 	--use("github/copilot.vim")
 
-	use({
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		module = "copilot",
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	})
+	-- use({
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	module = "copilot",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = { enabled = false },
+	-- 			panel = { enabled = false },
+	-- 		})
+	-- 	end,
+	-- })
 
-	use({
-		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua" },
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	})
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- })
 
 	use({ "nvim-neotest/nvim-nio" })
 
@@ -131,20 +131,20 @@ return require("packer").startup(function(use)
 
 	-- use({ "folke/noice.nvim", as = "noice" })
 
-	use({
-		"ekaj2/ChatGPT.nvim",
-		--"jackMort/ChatGPT.nvim",
-		--commit = "d4aa4d9", -- https://github.com/jackMort/ChatGPT.nvim/issues/303
-		--"~/projects/jackmort-chatgpt",
-		--config = function()
-		--    require("chatgpt").setup()
-		--end,
-		requires = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-	})
+	-- use({
+	-- 	"ekaj2/ChatGPT.nvim",
+	-- 	--"jackMort/ChatGPT.nvim",
+	-- 	--commit = "d4aa4d9", -- https://github.com/jackMort/ChatGPT.nvim/issues/303
+	-- 	--"~/projects/jackmort-chatgpt",
+	-- 	--config = function()
+	-- 	--    require("chatgpt").setup()
+	-- 	--end,
+	-- 	requires = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 	},
+	-- })
 
 	-- use {
 	--     "eoh-bse/minintro.nvim",
@@ -311,7 +311,7 @@ return require("packer").startup(function(use)
 				sorting = {
 					priority_weight = 2,
 					comparators = {
-						require("copilot_cmp.comparators").prioritize,
+						-- require("copilot_cmp.comparators").prioritize,
 
 						-- Below is the default comparitor list and order for nvim-cmp
 						cmp.config.compare.offset,
@@ -443,17 +443,17 @@ return require("packer").startup(function(use)
 		requires = { "nvim-telescope/telescope.nvim" },
 	})
 
-	-- m: toggle mode
-	-- tr: TroubleToggle
-	use({
-		"folke/trouble.nvim",
-		requires = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("trouble").setup()
-		end,
-	})
+	-- -- m: toggle mode
+	-- -- tr: TroubleToggle
+	-- use({
+	-- 	"folke/trouble.nvim",
+	-- 	requires = {
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 	},
+	-- 	config = function()
+	-- 		require("trouble").setup()
+	-- 	end,
+	-- })
 
 	-- Doesn't seem to work?
 	-- use({
@@ -511,15 +511,15 @@ return require("packer").startup(function(use)
 	-- 	end,
 	-- })
 
-	use({
-		"dstein64/nvim-scrollview",
-		config = function()
-			require("scrollview").setup({
-				scrollview_excluded_filetypes = { "NvimTree" },
-				scrollview_line_limit = 5000, -- default is 20k which is high
-			})
-		end,
-	})
+	-- use({
+	-- 	"dstein64/nvim-scrollview",
+	-- 	config = function()
+	-- 		require("scrollview").setup({
+	-- 			scrollview_excluded_filetypes = { "NvimTree" },
+	-- 			scrollview_line_limit = 5000, -- default is 20k which is high
+	-- 		})
+	-- 	end,
+	-- })
 
 	-- Doesn't seem to work on neovim :(
 	-- use({
@@ -666,45 +666,80 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"madox2/vim-ai",
-		as = "vim-ai",
-		config = function()
-			local initial_prompt = [[
-            Output only code. Do not include context.
-
-            ]]
-
-			local chat_engine_config = {
-				engine = "chat",
-				options = {
-					model = "gpt-4-turbo-preview",
-					endpoint_url = "https://api.openai.com/v1/chat/completions",
-					max_tokens = 1000,
-					temperature = 0.1,
-					request_timeout = 20,
-					selection_boundary = "",
-					enable_auth = true,
-					initial_prompt = initial_prompt, -- "Only output code. Do not use English, just provide code. Follow the instruction given.",
-				},
-				ui = {
-					paste_mode = false,
-				},
-			}
-
-			vim.g.vim_ai_complete = chat_engine_config
-			vim.g.vim_ai_edit = chat_engine_config
-		end,
-	})
+	-- use({
+	-- 	"madox2/vim-ai",
+	-- 	as = "vim-ai",
+	-- 	config = function()
+	-- 		local initial_prompt = [[
+	--             Output only code. Do not include context.
+	--
+	--             ]]
+	--
+	-- 		local chat_engine_config = {
+	-- 			engine = "chat",
+	-- 			options = {
+	-- 				model = "gpt-4-turbo-preview",
+	-- 				endpoint_url = "https://api.openai.com/v1/chat/completions",
+	-- 				max_tokens = 1000,
+	-- 				temperature = 0.1,
+	-- 				request_timeout = 20,
+	-- 				selection_boundary = "",
+	-- 				enable_auth = true,
+	-- 				initial_prompt = initial_prompt, -- "Only output code. Do not use English, just provide code. Follow the instruction given.",
+	-- 			},
+	-- 			ui = {
+	-- 				paste_mode = false,
+	-- 			},
+	-- 		}
+	--
+	-- 		vim.g.vim_ai_complete = chat_engine_config
+	-- 		vim.g.vim_ai_edit = chat_engine_config
+	-- 	end,
+	-- })
 
 	use({
 		"robitx/gp.nvim",
 		config = function()
 			require("gp").setup({
 				chat_topic_gen_model = "gpt-4-turbo-preview",
+				providers = {
+					openai = {
+						endpoint = "https://api.openai.com/v1/chat/completions",
+						secret = os.getenv("OPENAI_API_KEY"),
+					},
+					anthropic = {
+						endpoint = "https://api.anthropic.com/v1/messages",
+						secret = os.getenv("ANTHROPIC_API_KEY"),
+					},
+				},
 				agents = {
 					{
+						name = "Sonnet3-5",
+						chat = true,
+						command = false,
+						model = { model = "claude-3-5-sonnet-20240620" },
+						system_prompt = "You are a general AI assistant.\n\n"
+							.. "The user provided the additional info about how they would like you to respond:\n\n"
+							.. "- If you're unsure don't guess and say you don't know instead.\n"
+							.. "- Ask question if you need clarification to provide better answer.\n"
+							.. "- Think deeply and carefully from first principles step by step.\n"
+							.. "- Zoom out first to see the big picture and then zoom in to details.\n"
+							.. "- Use Socratic method to improve your thinking and coding skills.\n"
+							.. "- Don't elide any code from your output if the answer requires coding.\n"
+							.. "- Take a deep breath; You've got this!\n",
+					},
+					{
+						name = "CodeSonnet3-5",
+						chat = false,
+						command = true,
+						model = { model = "claude-3-5-sonnet-20240620" },
+						system_prompt = "You are an AI working as a code editor.\n\n"
+							.. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n"
+							.. "START AND END YOUR ANSWER WITH:\n\n```",
+					},
+					{
 						name = "ChatGPT4",
+						disable = true,
 						chat = true,
 						command = false,
 						-- string with model name or table with model name and parameters
@@ -722,23 +757,11 @@ return require("packer").startup(function(use)
 					},
 					{
 						name = "ChatGPT3-5",
-						-- chat = true,
-						-- command = false,
-						-- -- string with model name or table with model name and parameters
-						-- model = { model = "gpt-3.5-turbo-1106", temperature = 1.1, top_p = 1 },
-						-- -- system prompt (use this to specify the persona/role of the AI)
-						-- system_prompt = "You are a general AI assistant.\n\n"
-						-- 	.. "The user provided the additional info about how they would like you to respond:\n\n"
-						-- 	.. "- If you're unsure don't guess and say you don't know instead.\n"
-						-- 	.. "- Ask question if you need clarification to provide better answer.\n"
-						-- 	.. "- Think deeply and carefully from first principles step by step.\n"
-						-- 	.. "- Zoom out first to see the big picture and then zoom in to details.\n"
-						-- 	.. "- Use Socratic method to improve your thinking and coding skills.\n"
-						-- 	.. "- Don't elide any code from your output if the answer requires coding.\n"
-						-- 	.. "- Take a deep breath; You've got this!\n",
+						disable = true,
 					},
 					{
 						name = "CodeGPT4",
+						disable = true,
 						chat = false,
 						command = true,
 						-- string with model name or table with model name and parameters
@@ -750,22 +773,44 @@ return require("packer").startup(function(use)
 					},
 					{
 						name = "CodeGPT3-5",
-						-- chat = false,
-						-- command = true,
-						-- -- string with model name or table with model name and parameters
-						-- model = { model = "gpt-3.5-turbo-1106", temperature = 0.8, top_p = 1 },
-						-- -- system prompt (use this to specify the persona/role of the AI)
-						-- system_prompt = "You are an AI working as a code editor.\n\n"
-						-- 	.. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n"
-						-- 	.. "START AND END YOUR ANSWER WITH:\n\n```",
+						disable = true,
 					},
 				},
 			})
+			local function keymapOptions(desc)
+				return {
+					noremap = true,
+					silent = true,
+					nowait = true,
+					desc = "GPT prompt " .. desc,
+				}
+			end
 
 			-- or setup with your own config (see Install > Configuration in Readme)
 			-- require("gp").setup(config)
 
 			-- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+			vim.api.nvim_set_keymap("v", "<leader>gpn", ":<C-u>'<,'>GpChatNew vsplit<cr>", {})
+			vim.api.nvim_set_keymap("n", "<leader>gpn", "<cmd>GpChatNew vsplit<cr>", {})
+			vim.api.nvim_set_keymap("v", "<leader>gpp", ":<C-u>'<,'>GpChatPaste<cr>", {})
+			vim.api.nvim_set_keymap("v", "<leader>gpi", ":<C-u>'<,'>GpImplement<cr>", {})
+			vim.api.nvim_set_keymap("v", "<leader>gpw", ":<C-u>'<,'>GpWhisperRewrite<cr>", {})
+			vim.api.nvim_set_keymap("n", "<leader>gpd", ":<C-u>'<,'>GpWhisper<cr>", {}) -- dictate
+			vim.api.nvim_set_keymap("n", "<leader>c", "<cmd>GpChatNew<cr>", {}) -- to help me get over jackmort!
+			vim.api.nvim_set_keymap("n", "<leader>gpt", "<cmd>GpChatToggle<cr>", {})
+			vim.api.nvim_set_keymap("n", "<leader>gpf", "<cmd>GpChatFinder<cr>", {})
+			vim.api.nvim_set_keymap("n", "<leader>k", "<cmd>GpRewrite<cr>", {})
+			vim.api.nvim_set_keymap("v", "<leader>k", ":<C-u>'<,'>GpRewrite<cr>", {})
+
+			local original_gp_rewrite = vim.fn["gp#Rewrite"]
+
+			vim.fn["gp#Rewrite"] = function(...)
+				local args = { ... }
+				original_gp_rewrite(unpack(args))
+				vim.schedule(function()
+					vim.cmd("LspRestart")
+				end)
+			end
 		end,
 	})
 
@@ -778,16 +823,17 @@ return require("packer").startup(function(use)
 	-- 		})
 	-- 	end,
 	-- })
-	use({
-		"~/projects/uuid-nvim",
-		config = function()
-			require("uuid-nvim").setup({
-				case = "lower",
-				quotes = "none",
-				insert = "before",
-			})
-		end,
-	})
+
+	-- use({
+	-- 	"~/projects/uuid-nvim",
+	-- 	config = function()
+	-- 		require("uuid-nvim").setup({
+	-- 			case = "lower",
+	-- 			quotes = "none",
+	-- 			insert = "before",
+	-- 		})
+	-- 	end,
+	-- })
 
 	use({ "antoinemadec/FixCursorHold.nvim" })
 
@@ -808,13 +854,15 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		"coffebar/transfer.nvim",
+		-- "coffebar/transfer.nvim",
+		"~/projects/transfer.nvim",
 		cmd = {
 			"TransferInit",
 			"DiffRemote",
 			"TransferUpload",
 			"TransferDownload",
 			"TransferDirDiff",
+			-- "TransferGitDiff",
 			"TransferRepeat",
 		},
 		config = function()
@@ -842,25 +890,25 @@ return require("packer").startup(function(use)
 	-- 	end,
 	-- })
 
-	use({ "tpope/vim-dadbod" })
-	use({ "kristijanhusak/vim-dadbod-completion" })
-	use({
-		"kristijanhusak/vim-dadbod-ui",
-		requires = {
-			{ "tpope/vim-dadbod" },
-			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" } },
-		},
-		cmd = {
-			"DBUI",
-			"DBUIToggle",
-			"DBUIAddConnection",
-			"DBUIFindBuffer",
-		},
-		config = function()
-			-- Your DBUI configuration
-			vim.g.db_ui_use_nerd_fonts = 1
-		end,
-	})
+	-- use({ "tpope/vim-dadbod" })
+	-- use({ "kristijanhusak/vim-dadbod-completion" })
+	-- use({
+	-- 	"kristijanhusak/vim-dadbod-ui",
+	-- 	requires = {
+	-- 		{ "tpope/vim-dadbod" },
+	-- 		{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" } },
+	-- 	},
+	-- 	cmd = {
+	-- 		"DBUI",
+	-- 		"DBUIToggle",
+	-- 		"DBUIAddConnection",
+	-- 		"DBUIFindBuffer",
+	-- 	},
+	-- 	config = function()
+	-- 		-- Your DBUI configuration
+	-- 		vim.g.db_ui_use_nerd_fonts = 1
+	-- 	end,
+	-- })
 
 	-- use({ "ThePrimeagen/vim-be-good" })
 
@@ -876,23 +924,26 @@ return require("packer").startup(function(use)
 	-- 	"LunarVim/bigfile.nvim",
 	-- })
 
-	-- requires Neovim 0.10.x
-	use({
-		"Bekaboo/dropbar.nvim",
-		requires = {
-			"nvim-telescope/telescope-fzf-native.nvim",
-		},
-	})
+	-- -- requires Neovim 0.10.x
+	-- use({
+	-- 	"Bekaboo/dropbar.nvim",
+	-- 	requires = {
+	-- 		"nvim-telescope/telescope-fzf-native.nvim",
+	-- 	},
+	-- })
+
+	-- use({
+	-- 	"microsoft/vscode-js-debug",
+	-- 	opt = true,
+	-- 	run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	-- })
+	-- use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
 
 	use({
-		"microsoft/vscode-js-debug",
-		opt = true,
-		run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-	})
-	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
-
-	use({
+		-- See: https://github.com/mrcjkb/rustaceanvim/discussions/396
+		-- need to update my nightly build to fix
 		"mrcjkb/rustaceanvim",
+		-- "~/projects/rustaceanvim",
 		tag = "4.*", -- Recommended
 	})
 
@@ -908,6 +959,8 @@ return require("packer").startup(function(use)
 	-- 		})
 	-- 	end,
 	-- })
+
+	-- use("subnut/nvim-ghost.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()

@@ -8,6 +8,11 @@ vim.keymap.set("n", "<leader>fa", function()
 end)
 vim.keymap.set("n", "<leader>ff", builtin.git_files, {})
 
+-- find branch
+vim.keymap.set("n", "<leader>fb", builtin.git_branches, {})
+-- workspace lsp search
+vim.keymap.set("n", "<leader>fl", builtin.lsp_dynamic_workspace_symbols, {})
+
 -- this doesn't work, maybe come back later
 -- UPDATE: had to install ripgrep
 -- vim.keymap.set('n', '<leader>ss', function()
@@ -65,8 +70,8 @@ vim.keymap.set("n", "<leader>gf", function()
 
 	-- Get the yanked text
 	local filename = vim.fn.getreg("v")
-	-- remove all non-alphanumeric characters
-	filename = filename:gsub("[^%w]", "")
+	-- remove all non-alphanumeric characters and first character if it's a lowercase 'f'
+	filename = filename:gsub("[^%w]", ""):gsub("^f", "")
 
 	-- for debugging
 	-- vim.api.nvim_echo({ { filename, "White" } }, true, {})
@@ -123,7 +128,8 @@ end)
 vim.keymap.set("n", "<leader>b", function()
 	builtin.buffers({
 		path_display = {
-			"tail",
+			"smart",
+			-- "tail",
 			-- shorten = 4,
 		}, -- see :h telescope.defaults.path_display
 		ignore_current_buffer = true,
