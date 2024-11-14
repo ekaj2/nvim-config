@@ -1,5 +1,7 @@
 -- Borrowed from ThePrimeagen: https://youtu.be/w7i4amO_zaE?t=355
 local builtin = require("telescope.builtin")
+local telescope = require("telescope")
+local actions = require("telescope.actions")
 
 vim.keymap.set("n", "<leader>fa", function()
 	builtin.find_files({
@@ -32,6 +34,16 @@ vim.keymap.set("n", "<leader>fl", builtin.lsp_dynamic_workspace_symbols, {})
 -- this doesn't work, maybe come back later
 -- UPDATE: had to install ripgrep
 vim.keymap.set("n", "<leader>ss", function()
+	telescope.extensions.live_grep_args.live_grep_args({
+		path_display = {
+			-- "tail",
+			-- shorten = 4,
+		}, -- see :h telescope.defaults.path_display
+		wrap_results = false,
+	})
+end)
+
+vim.keymap.set("n", "<leader>so", function()
 	builtin.live_grep({
 		path_display = {
 			-- "tail",
@@ -107,7 +119,7 @@ end)
 -- From this answer: https://www.reddit.com/r/neovim/comments/tpnt3c/comment/i2chddu/
 -- Potentially better solution for down the road: https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/telescope/custom/multi_rg.lua
 local live_grep_in_glob = function(glob_pattern)
-	require("telescope.builtin").live_grep({
+	builtin.live_grep({
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -166,7 +178,7 @@ local new_maker = function(filepath, bufnr, opts)
 	end)
 end
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		buffer_previewer_maker = new_maker,
 		-- see: https://github.com/nvim-telescope/telescope.nvim/issues/1379#issuecomment-996590765
@@ -176,10 +188,13 @@ require("telescope").setup({
 		log_level = "debug",
 		mappings = {
 			i = {
-				["<C-c>"] = require("telescope.actions").close,
+				["<C-c>"] = actions.close,
+				["<S-Down>"] = actions.cycle_history_next,
+				["<S-Up>"] = actions.cycle_history_prev,
 			},
 			n = {
-				["<C-c>"] = require("telescope.actions").close,
+				["<C-c>"] = actions.close,
+				["<S-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 			},
 		},
 	},
@@ -198,3 +213,5 @@ require("telescope").setup({
 		},
 	},
 })
+
+telescope.load_extension("live_grep_args")

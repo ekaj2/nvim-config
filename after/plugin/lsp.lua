@@ -6,7 +6,7 @@ lsp_zero.preset("recommended")
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 lsp_zero.ensure_installed({
 	-- TODO
-	"tsserver",
+	"ts_ls",
 	"html",
 	"eslint",
 	"gopls",

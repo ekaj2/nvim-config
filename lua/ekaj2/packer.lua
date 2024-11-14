@@ -24,7 +24,9 @@ return require("packer").startup(function(use)
 		"nvim-telescope/telescope.nvim",
 		-- tag = "0.1.2",
 		-- or                            , branch = '0.1.x',
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = {
+			{ "nvim-lua/plenary.nvim", "nvim-telescope/telescope-live-grep-args.nvim" },
+		},
 	})
 
 	use({
@@ -70,7 +72,7 @@ return require("packer").startup(function(use)
 	use("mbbill/undotree")
 
 	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb") -- for GitHub...unfortunately needs netrw - see init.lua
+	-- use("tpope/vim-rhubarb") -- for GitHub...unfortunately needs netrw - see init.lua
 
 	use({
 		"VonHeikemen/lsp-zero.nvim",
@@ -193,14 +195,15 @@ return require("packer").startup(function(use)
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("theHamsta/nvim-dap-virtual-text")
 
-	use({
-		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup({
-				library = { plugins = { "nvim-dap-ui" }, types = true },
-			})
-		end,
-	})
+	-- TODO: switch to lazydev: https://github.com/folke/neodev.nvim
+	-- use({
+	-- 	"folke/neodev.nvim",
+	-- 	config = function()
+	-- 		require("neodev").setup({
+	-- 			library = { plugins = { "nvim-dap-ui" }, types = true },
+	-- 		})
+	-- 	end,
+	-- })
 
 	use({
 		"kylechui/nvim-surround",
@@ -212,12 +215,12 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
-	})
+	-- use({
+	-- 	"norcalli/nvim-colorizer.lua",
+	-- 	config = function()
+	-- 		require("colorizer").setup()
+	-- 	end,
+	-- })
 
 	-- use({
 	-- 	"ziontee113/color-picker.nvim",
@@ -271,15 +274,15 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"roobert/tailwindcss-colorizer-cmp.nvim",
-		-- optionally, override the default options:
-		config = function()
-			require("tailwindcss-colorizer-cmp").setup({
-				color_square_width = 2,
-			})
-		end,
-	})
+	-- use({
+	-- 	"roobert/tailwindcss-colorizer-cmp.nvim",
+	-- 	-- optionally, override the default options:
+	-- 	config = function()
+	-- 		require("tailwindcss-colorizer-cmp").setup({
+	-- 			color_square_width = 2,
+	-- 		})
+	-- 	end,
+	-- })
 
 	use({ "dcampos/nvim-snippy" })
 	use({ "dcampos/cmp-snippy" })
@@ -303,7 +306,7 @@ return require("packer").startup(function(use)
 				},
 				formatting = {
 					-- this only half works :(
-					format = require("tailwindcss-colorizer-cmp").formatter,
+					-- format = require("tailwindcss-colorizer-cmp").formatter,
 				},
 				completion = {
 					completeopt = "menu,menuone,noinsert",
@@ -351,12 +354,12 @@ return require("packer").startup(function(use)
 				--			},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "copilot" },
+					-- { name = "copilot" },
 					-- { name = "vsnip" }, -- For vsnip users.
 					-- { name = 'luasnip' }, -- For luasnip users.
 					-- { name = 'ultisnips' }, -- For ultisnips users.
 					{ name = "snippy" }, -- For snippy users.
-					{ name = "vim-dadbod-completion" },
+					-- { name = "vim-dadbod-completion" },
 					{ name = "calc" },
 					{ name = "path" },
 					{ name = "emoji" },
@@ -408,24 +411,24 @@ return require("packer").startup(function(use)
 	-- 	end,
 	-- })
 
-	-- doesn't work rn, but maybe someday:
-	-- https://github.com/pwntester/octo.nvim#-features
-	use({
-		"pwntester/octo.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("octo").setup({
-				-- timeout = 20000, -- timeout for requests between the remote server
-				suppress_missing_scope = {
-					projects_v2 = true,
-				},
-			})
-		end,
-	})
+	-- -- doesn't work rn, but maybe someday:
+	-- -- https://github.com/pwntester/octo.nvim#-features
+	-- use({
+	-- 	"pwntester/octo.nvim",
+	-- 	requires = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 		"nvim-tree/nvim-web-devicons",
+	-- 	},
+	-- 	config = function()
+	-- 		require("octo").setup({
+	-- 			-- timeout = 20000, -- timeout for requests between the remote server
+	-- 			suppress_missing_scope = {
+	-- 				projects_v2 = true,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- })
 
 	-- https://github.com/dhruvmanila/browser-bookmarks.nvim#supported-browsers
 
@@ -438,10 +441,10 @@ return require("packer").startup(function(use)
 	-- 	end,
 	-- })
 
-	use({
-		"lalitmee/browse.nvim",
-		requires = { "nvim-telescope/telescope.nvim" },
-	})
+	-- use({
+	-- 	"lalitmee/browse.nvim",
+	-- 	requires = { "nvim-telescope/telescope.nvim" },
+	-- })
 
 	-- -- m: toggle mode
 	-- -- tr: TroubleToggle
@@ -477,12 +480,14 @@ return require("packer").startup(function(use)
 	-- "": open menu
 	use("gennaro-tedesco/nvim-peekup")
 
-	use({
-		"chentoast/marks.nvim",
-		config = function()
-			require("marks").setup({})
-		end,
-	})
+	-- TODO: when I have more time
+	--
+	-- use({
+	-- 	"chentoast/marks.nvim",
+	-- 	config = function()
+	-- 		require("marks").setup({})
+	-- 	end,
+	-- })
 
 	-- use({
 	-- 	"Bekaboo/deadcolumn.nvim",
@@ -553,118 +558,118 @@ return require("packer").startup(function(use)
 	-- 	requires = { "nvim-tree/nvim-web-devicons", opt = true },
 	-- })
 
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			local hooks = require("ibl.hooks")
-			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-				vim.api.nvim_set_hl(0, "IblIndent", { fg = "#393552" })
-				-- vim.api.nvim_set_hl(0, "IblIndent", { fg = "#ea9a97" })
-			end)
+	-- use({
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	config = function()
+	-- 		local hooks = require("ibl.hooks")
+	-- 		hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+	-- 			vim.api.nvim_set_hl(0, "IblIndent", { fg = "#393552" })
+	-- 			-- vim.api.nvim_set_hl(0, "IblIndent", { fg = "#ea9a97" })
+	-- 		end)
+	--
+	-- 		require("ibl").setup({
+	-- 			indent = {
+	-- 				char = "▏",
+	-- 			},
+	-- 			exclude = {
+	-- 				filetypes = { "dashboard" }, -- to find one do :lua print(vim.bo.filetype)
+	-- 				buftypes = { "terminal" },
+	-- 			},
+	-- 			scope = {
+	-- 				show_start = false,
+	-- 				show_end = false,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- })
 
-			require("ibl").setup({
-				indent = {
-					char = "▏",
-				},
-				exclude = {
-					filetypes = { "dashboard" }, -- to find one do :lua print(vim.bo.filetype)
-					buftypes = { "terminal" },
-				},
-				scope = {
-					show_start = false,
-					show_end = false,
-				},
-			})
-		end,
-	})
+	-- use({
+	-- 	"folke/zen-mode.nvim",
+	-- 	config = function()
+	-- 		require("zen-mode").setup({
+	-- 			window = {
+	-- 				backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+	-- 				-- height and width can be:
+	-- 				-- * an absolute number of cells when > 1
+	-- 				-- * a percentage of the width / height of the editor when <= 1
+	-- 				-- * a function that returns the width or the height
+	-- 				width = 80, -- width of the Zen window
+	-- 				height = 1, -- height of the Zen window
+	-- 				-- by default, no options are changed for the Zen window
+	-- 				-- uncomment any of the options below, or add other vim.wo options you want to apply
+	-- 				options = {
+	-- 					-- signcolumn = "no", -- disable signcolumn
+	-- 					number = false, -- disable number column
+	-- 					relativenumber = false, -- disable relative numbers
+	-- 					-- cursorline = false, -- disable cursorline
+	-- 					-- cursorcolumn = false, -- disable cursor column
+	-- 					-- foldcolumn = "0", -- disable fold column
+	-- 					-- list = false, -- disable whitespace characters
+	-- 				},
+	-- 			},
+	-- 			plugins = {
+	-- 				-- disable some global vim options (vim.o...)
+	-- 				-- comment the lines to not apply the options
+	-- 				options = {
+	-- 					enabled = true,
+	-- 					ruler = false, -- disables the ruler text in the cmd line area
+	-- 					showcmd = false, -- disables the command in the last line of the screen
+	-- 					-- you may turn on/off statusline in zen mode by setting 'laststatus'
+	-- 					-- statusline will be shown only if 'laststatus' == 3
+	-- 					laststatus = 0, -- turn off the statusline in zen mode
+	-- 				},
+	-- 				twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+	-- 				gitsigns = { enabled = false }, -- disables git signs
+	-- 				tmux = { enabled = false }, -- disables the tmux statusline
+	-- 			},
+	-- 			-- callback where you can add custom code when the Zen window opens
+	-- 			on_open = function(win)
+	-- 				-- enable wrap
+	-- 				vim.opt.wrap = true
+	-- 			end,
+	-- 			-- callback where you can add custom code when the Zen window closes
+	-- 			on_close = function() end,
+	-- 		})
+	-- 	end,
+	-- })
 
-	use({
-		"folke/zen-mode.nvim",
-		config = function()
-			require("zen-mode").setup({
-				window = {
-					backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-					-- height and width can be:
-					-- * an absolute number of cells when > 1
-					-- * a percentage of the width / height of the editor when <= 1
-					-- * a function that returns the width or the height
-					width = 80, -- width of the Zen window
-					height = 1, -- height of the Zen window
-					-- by default, no options are changed for the Zen window
-					-- uncomment any of the options below, or add other vim.wo options you want to apply
-					options = {
-						-- signcolumn = "no", -- disable signcolumn
-						number = false, -- disable number column
-						relativenumber = false, -- disable relative numbers
-						-- cursorline = false, -- disable cursorline
-						-- cursorcolumn = false, -- disable cursor column
-						-- foldcolumn = "0", -- disable fold column
-						-- list = false, -- disable whitespace characters
-					},
-				},
-				plugins = {
-					-- disable some global vim options (vim.o...)
-					-- comment the lines to not apply the options
-					options = {
-						enabled = true,
-						ruler = false, -- disables the ruler text in the cmd line area
-						showcmd = false, -- disables the command in the last line of the screen
-						-- you may turn on/off statusline in zen mode by setting 'laststatus'
-						-- statusline will be shown only if 'laststatus' == 3
-						laststatus = 0, -- turn off the statusline in zen mode
-					},
-					twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-					gitsigns = { enabled = false }, -- disables git signs
-					tmux = { enabled = false }, -- disables the tmux statusline
-				},
-				-- callback where you can add custom code when the Zen window opens
-				on_open = function(win)
-					-- enable wrap
-					vim.opt.wrap = true
-				end,
-				-- callback where you can add custom code when the Zen window closes
-				on_close = function() end,
-			})
-		end,
-	})
+	-- use({
+	-- 	"folke/twilight.nvim",
+	-- 	config = function()
+	-- 		require("twilight").setup({
+	-- 			dimming = {
+	-- 				alpha = 0.75, -- amount of dimming
+	--
+	-- 				-- we try to get the foreground from the highlight groups or fallback color
+	-- 				color = { "Normal", "#aabbff" },
+	-- 			},
+	--
+	-- 			treesitter = false,
+	-- 			context = 1,
+	-- 			expand = {
+	-- 				-- "function",
+	-- 				-- "method",
+	-- 				-- "table",
+	-- 				-- "if_statement",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- })
 
-	use({
-		"folke/twilight.nvim",
-		config = function()
-			require("twilight").setup({
-				dimming = {
-					alpha = 0.75, -- amount of dimming
-
-					-- we try to get the foreground from the highlight groups or fallback color
-					color = { "Normal", "#aabbff" },
-				},
-
-				treesitter = false,
-				context = 1,
-				expand = {
-					-- "function",
-					-- "method",
-					-- "table",
-					-- "if_statement",
-				},
-			})
-		end,
-	})
-
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-
-		config = function()
-			require("catppuccin").setup({
-				flavour = "latte", -- latte, frappe, macchiato, mocha
-				background = { -- :h background
-					light = "latte",
-					dark = "mocha",
-				},
-			})
-		end,
-	})
+	-- use({
+	-- 	"catppuccin/nvim",
+	-- 	as = "catppuccin",
+	--
+	-- 	config = function()
+	-- 		require("catppuccin").setup({
+	-- 			flavour = "latte", -- latte, frappe, macchiato, mocha
+	-- 			background = { -- :h background
+	-- 				light = "latte",
+	-- 				dark = "mocha",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- })
 
 	-- use({
 	-- 	"madox2/vim-ai",
@@ -802,9 +807,9 @@ return require("packer").startup(function(use)
 			vim.api.nvim_set_keymap("n", "<leader>k", "<cmd>GpRewrite<cr>", {})
 			vim.api.nvim_set_keymap("v", "<leader>k", ":<C-u>'<,'>GpRewrite<cr>", {})
 
-			local original_gp_rewrite = vim.fn["gp#Rewrite"]
+			local original_gp_rewrite = vim.fn["GpRewrite"]
 
-			vim.fn["gp#Rewrite"] = function(...)
+			vim.fn["GpRewrite"] = function(...)
 				local args = { ... }
 				original_gp_rewrite(unpack(args))
 				vim.schedule(function()
@@ -835,7 +840,7 @@ return require("packer").startup(function(use)
 	-- 	end,
 	-- })
 
-	use({ "antoinemadec/FixCursorHold.nvim" })
+	-- use({ "antoinemadec/FixCursorHold.nvim" })
 
 	use({
 		"nvim-neotest/neotest",
@@ -849,9 +854,10 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-neotest/neotest-python",
 	})
-	use({
-		"NoahTheDuke/vim-just",
-	})
+
+	-- use({
+	-- 	"NoahTheDuke/vim-just",
+	-- })
 
 	use({
 		-- "coffebar/transfer.nvim",

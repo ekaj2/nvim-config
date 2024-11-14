@@ -49,46 +49,45 @@ vim.g.neoformat_go_gofmt = {
 -- autocmd VimEnter * autocmd BufWritePre * silent Neoformat
 vim.g.neoformat_only_msg_on_error = 0
 
-function _Conditional_neoformat()
-	local file_path = vim.fn.expand("%:p")
-	local disable_paths = {
-		"reddy/lca-demo",
-		"reddy/pca-demo",
-		-- "reddy/dj-proj/mainapp/templates/",
-		-- "reddy/flow_checks/flow_checks/templates/",
-		-- "reddy/dj-proj/systems_training/templates/",
-		-- "reddy/dj-proj/usage_tracking/templates/",
-		-- "reddy/dj-proj/components/",
-	}
-
-	for _, pattern in ipairs(disable_paths) do
-		-- replace all - characters with %-
-		pattern = pattern:gsub("-", "%%-")
-
-		if file_path:match(pattern) then
-			return
-		end
-	end
-
-	local disable_format = vim.b.neoformat_disable or false
-	if not disable_format then
-		vim.cmd("Neoformat")
-	end
-end
-
-vim.api.nvim_exec(
-	[[
-  command! -nargs=0 ConditionalNeoformat :lua _Conditional_neoformat()
-]],
-	false
-)
-
-vim.api.nvim_exec(
-	[[
-  augroup fmt
-    autocmd!
-    autocmd BufWritePre * ConditionalNeoformat
-  augroup END
-]],
-	false
-)
+-- NOTE: Uncomment all this to get auto formatting back.
+--
+-- function _Conditional_neoformat()
+-- 	local file_path = vim.fn.expand("%:p")
+-- 	local disable_paths = {
+-- 		"reddy/lca-demo",
+-- 		"reddy/pca-demo",
+-- 		"reddy/split-tauri",
+-- 		"reddy/dj-proj/",
+-- 	}
+--
+-- 	for _, pattern in ipairs(disable_paths) do
+-- 		-- replace all - characters with %-
+-- 		pattern = pattern:gsub("-", "%%-")
+--
+-- 		if file_path:match(pattern) then
+-- 			return
+-- 		end
+-- 	end
+--
+-- 	local disable_format = vim.b.neoformat_disable or false
+-- 	if not disable_format then
+-- 		vim.cmd("Neoformat")
+-- 	end
+-- end
+--
+-- vim.api.nvim_exec(
+-- 	[[
+--   command! -nargs=0 ConditionalNeoformat :lua _Conditional_neoformat()
+-- ]],
+-- 	false
+-- )
+--
+-- vim.api.nvim_exec(
+-- 	[[
+--   augroup fmt
+--     autocmd!
+--     autocmd BufWritePre * ConditionalNeoformat
+--   augroup END
+-- ]],
+-- 	false
+-- )
