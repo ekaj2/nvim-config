@@ -128,3 +128,5 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>mm", function()
 	require("melody").music_search()
 end, { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>fm", "<cmd>Neoformat<CR>", { noremap = true, silent = true })

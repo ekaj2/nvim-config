@@ -723,15 +723,11 @@ return require("packer").startup(function(use)
 						chat = true,
 						command = false,
 						model = { model = "claude-3-5-sonnet-20240620" },
-						system_prompt = "You are a general AI assistant.\n\n"
-							.. "The user provided the additional info about how they would like you to respond:\n\n"
-							.. "- If you're unsure don't guess and say you don't know instead.\n"
-							.. "- Ask question if you need clarification to provide better answer.\n"
-							.. "- Think deeply and carefully from first principles step by step.\n"
-							.. "- Zoom out first to see the big picture and then zoom in to details.\n"
-							.. "- Use Socratic method to improve your thinking and coding skills.\n"
-							.. "- Don't elide any code from your output if the answer requires coding.\n"
-							.. "- Take a deep breath; You've got this!\n",
+						system_prompt = "You are an experienced engineer.\n\n"
+							.. "- Additional context is provided below.\n"
+							.. "- Use tailwind classes over css.\n"
+							.. "- Use vanilla JS at all times, ideally with inline <script> tags.\n"
+							.. "- Simplicity is fundamental.\n",
 					},
 					{
 						name = "CodeSonnet3-5",
