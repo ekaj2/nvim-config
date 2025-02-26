@@ -8,7 +8,6 @@ lsp_zero.ensure_installed({
 	-- TODO
 	"ts_ls",
 	"html",
-	"python",
 	"pyright",
 	"ruff",
 	"eslint",
