@@ -2,14 +2,16 @@
 -- vim.g.loaded_netrw = 1
 -- vim.g.loaded_netrwPlugin = 1
 
--- not disabling netrw for vim-rhubarb!
-require("nvim-tree").disable_netrw = false
-require("nvim-tree").hijack_netrw = true
-
-require("ekaj2.packer")
+-- require("ekaj2.packer")
 
 -- set before remap so that leader key is already set
 require("ekaj2.set")
+
+require("ekaj2.lazy")
+
+-- not disabling netrw for vim-rhubarb!
+require("nvim-tree").disable_netrw = false
+require("nvim-tree").hijack_netrw = true
 
 -- call before remap so remap can setup hotkeys
 require("ekaj2.gpt_notes")

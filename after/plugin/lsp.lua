@@ -8,8 +8,11 @@ lsp_zero.ensure_installed({
 	-- TODO
 	"ts_ls",
 	"html",
+	"python",
+	"pyright",
+	"ruff",
 	"eslint",
-	"gopls",
+	-- "gopls",
 	-- "rust_analyzer",
 	"tailwindcss", -- npm install -g @tailwindcss/language-server
 	"ansiblels", -- npm install -g @tailwindcss/language-server
