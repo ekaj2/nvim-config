@@ -130,3 +130,7 @@ vim.keymap.set("n", "<leader>mm", function()
 end, { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>fm", "<cmd>Neoformat<CR>", { noremap = true, silent = true })
+
+-- LSP hotkeys
+-- normal-mode: g l  → show line diagnostics
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { silent = true })
